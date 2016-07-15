@@ -3,13 +3,6 @@ angular.module('app.controllers', [])
 .controller('homeCtrl', function($scope, $state, dataService) {
    $scope.status = "open";
 
-//   init()
-//   function init(){
-// console.log("init");
-//         $scope.hours = dataService.getData();
-//         console.log($scope.hours);
-//       }
-
 var ref = new Firebase("https://flowershop.firebaseio.com")
   ref.once("value", function(snapshot){
     var data = snapshot.val();
@@ -20,6 +13,16 @@ var ref = new Firebase("https://flowershop.firebaseio.com")
     $scope.closingTime = data.wkdayClose;
     console.log($scope.amhour);
 
+var satTime = angular.element( document.querySelector( '#satHours' ) );
+var satClose = angular.element( document.querySelector( '#closeSat' ) );
+
+if(data.satOpen != true) {
+  console.log("open saturday");
+
+  satTime.addClass('hide');
+  satClose.removeClass("hide");
+
+}
 
   $scope.time = new Date().toISOString();
   var now = new Date();
@@ -101,6 +104,25 @@ if (day == 1 || day == 2 ||day == 3 ||day == 4 ||day == 5){
 
 .controller('cloudCtrl', function($scope, dataService) {
 
+  var yesMenu = angular.element( document.querySelector( '#menuSat' ) );
+
+$scope.yesSat = function () {
+  console.log("hey");
+  yesMenu.removeClass('hide');
+  dataService.addData({
+    satOpen: true
+})
+}
+
+$scope.noSat = function () {
+  console.log("no");
+  yesMenu.addClass('hide');
+
+  dataService.addData({
+    satOpen: false
+})
+
+}
 $scope.openTime = function() {
 
 
