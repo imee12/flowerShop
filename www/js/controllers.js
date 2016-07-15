@@ -39,24 +39,41 @@ angular.module('app.controllers', [])
     $scope.sathour = data.satpmStart;
     $scope.satclosingTime = data.satClose;
 
+    $scope.sunamhour = data.sunamStart;
+    $scope.sunlunchBreak = data.sunLunch;
+    $scope.sunhour = data.sunpmStart;
+    $scope.sunclosingTime = data.sunClose;
+
     console.log($scope.amhour);
 
 var satTime = angular.element( document.querySelector( '#satHours' ) );
 var satClose = angular.element( document.querySelector( '#closeSat' ) );
+var sunTime = angular.element( document.querySelector( '#sunHours' ) );
+var sunClose = angular.element( document.querySelector( '#closeSun' ) );
+
 
 if(data.satOpen != true) {
-  console.log("open saturday");
-
+  console.log("closed saturday");
   satTime.addClass('hide');
   satClose.removeClass("hide");
-
 }
 
 if(data.satOpen == true) {
   console.log("open saturday");
-
   satTime.removeClass('hide');
   satClose.addClass("hide");
+}
+
+if(data.sunOpen != true) {
+  console.log("closed sunday");
+  sunTime.addClass('hide');
+  sunClose.removeClass("hide");
+}
+
+if(data.sunOpen == true) {
+  console.log("close sunday");
+  sunTime.removeClass('hide');
+  sunClose.addClass("hide");
 
 }
 
@@ -167,6 +184,26 @@ $scope.noSat = function () {
 })
 
 }
+
+var yesSunMenu = angular.element( document.querySelector( '#menuSun' ) );
+
+$scope.yesSun = function () {
+console.log("hey");
+yesSunMenu.removeClass('hide');
+dataService.addData({
+  sunOpen: true
+})
+}
+
+$scope.noSun = function () {
+console.log("no");
+yesSunMenu.addClass('hide');
+
+dataService.addData({
+  sunOpen: false
+})
+
+}
 $scope.openTime = function() {
 
 
@@ -215,13 +252,13 @@ $scope.openTime = function() {
       sunclose: '',
     }
 
-  $scope.saveHoursSat = function() {
-    console.log($scope.satform);
+  $scope.saveHoursSun = function() {
+    console.log($scope.sunform);
     dataService.addData({
-      satamStart: $scope.form.satam || '',
-      satwkdayLunch: $scope.form.satlunch || '',
-      satpmStart: $scope.form.satpm || '',
-      satwkdayClose: $scope.form.satclose || '',
+      sunamStart: $scope.form.sunam || '',
+      sunLunch: $scope.form.sunlunch || '',
+      sunpmStart: $scope.form.sunpm || '',
+      sunClose: $scope.form.sunclose || '',
     })
 
   }

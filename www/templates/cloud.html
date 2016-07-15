@@ -28,8 +28,8 @@
    <div class="col" style="font-size: 20px; margin-bottom: 5px; text-align: center">Open Saturday?</div>
    <div id="saturdayRadios" class="col">
 <div class="row">
-<ion-radio class="col col-50" ng-model="choice" ng-value="'A'" ng-click="yesSat()">Yes</ion-radio>
-<ion-radio class="col" ng-model="choice" ng-value="'B'" ng-click="noSat()">No</ion-radio>
+<ion-radio class="col col-50" ng-model="choice" ng-value="'yesSat'" ng-click="yesSat()">Yes</ion-radio>
+<ion-radio class="col" ng-model="choice" ng-value="'noSat'" ng-click="noSat()">No</ion-radio>
 </div>
 <!--    <label type="radio" name="" value="" ng-click="yesSat()"><br>
   <span>Yes</span>
@@ -59,17 +59,51 @@
     <div class="col">Current Time: {{satClose| date: "h:mm a"}}</div>
     <div class="col">New Time: {{form.satclose| date: "h:mm a"}}</div>
  </label>
-
-
  <div ng-click="saveHoursSat()" id="glass" class="ion-android-done glass-icon" style="font-size:35px; margin-right: 5px"></div>
-<label class="item item-input assetItem">
+</div>
+
+<div style="height: 10px"></div>
+
+  <div class="col" style="font-size: 20px; margin-bottom: 5px; text-align: center">Open Sunday?</div>
+  <div id="sundayRadios" class="col">
+<div class="row">
+<ion-radio class="col col-50" ng-model="choice" ng-value="'yesSun'" ng-click="yesSun()">Yes</ion-radio>
+<ion-radio class="col" ng-model="choice" ng-value="'noSun'" ng-click="noSun()">No</ion-radio>
+</div>
+</div>
+<div id="menuSun"class="hide">
+  <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.sunam">
+     <div class="col" style="font-size: 20px">M - F AM Open</div>
+     <div class="col">Current Time: {{sunamhour| date: "h:mm a"}}</div>
+     <div class="col">New Time: {{form.sunam| date: "h:mm a"}}</div>
+ </label>
+ <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.sunlunch">
+    <div class="col" style="font-size: 20px">M - F Lunch</div>
+    <div class="col">Current Time: {{sunlunchBreak| date: "h:mm a"}}</div>
+    <div class="col">New Time: {{form.sunlunch| date: "h:mm a"}}</div>
+</label>
+<label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.sunpm">
+   <div class="col" style="font-size: 20px">M - F PM Open</div>
+   <div class="col">Current Time: {{sunpmStart| date: "h:mm a"}}</div>
+   <div class="col">New Time: {{form.sunpm| date: "h:mm a"}}</div>
+</label>
+<label class="row" style="borde-bottomr: 2px solid black"ion-datetime-picker time am-pm ng-model="form.sunclose">
+   <div class="col" style="font-size: 20px">M - F Close</div>
+   <div class="col">Current Time: {{sunClose| date: "h:mm a"}}</div>
+   <div class="col">New Time: {{form.sunclose| date: "h:mm a"}}</div>
+</label>
+<div ng-click="saveHoursSun()" id="glass" class="ion-android-done glass-icon" style="font-size:35px; margin-right: 5px"></div>
+</div>
+
+
+<!-- <label class="item item-input assetItem">
    <span class="input-label">Sunday</span>
    <input type="text" placeholder="" ng-model="form.sun">
 </label>
 <label class="item item-input assetItem">
    <span class="input-label">Be Back</span>
    <input type="text" placeholder="" ng-model="form.beback">
-</label>
+</label> -->
 
 
 

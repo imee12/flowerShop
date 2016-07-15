@@ -35,15 +35,17 @@
       <div class="col" style="font-size: 28px;text-align: center">{{satclosingTime| date: "h:mm a"}}</div>
     </div>
     <h4 class="col" style="text-align: center">sunday</h4>
-    <div class="row">
-           <div class="col" style="font-size: 28px; text-align: center">{{amhour| date: "h:mm a"}}</div>
+      <div id="closeSun" class="col hide" style="text-align: center; font-size: 28px">closed</div>
+    <div id="sunHours" class="row">
+           <div class="col" style="font-size: 28px; text-align: center">{{sunamhour| date: "h:mm a"}}</div>
            <span style="font-size:20px;text-align: center;font-weight: bold">to</span>
-           <div class="col" style="font-size: 28px;text-align: center">{{lunchBreak| date: "h:mm a"}}</div>
+           <div class="col" style="font-size: 28px;text-align: center">{{sunlunchBreak| date: "h:mm a"}}</div>
         <span  style="font-size: 20px;text-align: center; font-weight: bold">AND</span>
-        <div class="col" style="font-size: 28px;text-align: center">{{pmhour| date: "h:mm a"}}</div>
+        <div class="col" style="font-size: 28px;text-align: center">{{sunpmhour| date: "h:mm a"}}</div>
         <span style="font-size: 20px;text-align: center; font-weight: bold">to</span>
-        <div class="col" style="font-size: 28px;text-align: center">{{closingTime| date: "h:mm a"}}</div>
+        <div class="col" style="font-size: 28px;text-align: center">{{sunclosingTime| date: "h:mm a"}}</div>
       </div>
+      
 </div>
 
       </div>
