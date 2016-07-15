@@ -1,16 +1,44 @@
 angular.module('app.controllers', [])
 
-.controller('homeCtrl', function($scope, $state, dataService) {
-   $scope.status = "open";
+.controller('homeCtrl', function($scope, $state, dataService, $timeout) {
+  $scope.status = "open";
 
-var ref = new Firebase("https://flowershop.firebaseio.com")
-  ref.once("value", function(snapshot){
+  $scope.clock = "loading clock...";
+      $scope.tickInterval = 1000
+
+      var tick = function() {
+          $scope.clock = Date.now()
+          $timeout(tick, $scope.tickInterval);
+  }
+
+      $timeout(tick, $scope.tickInterval);
+
+  setInterval(function(){
+    checkStatus();
+  }, 5000);
+
+   $scope.$on('$ionicView.enter', function() {
+     checkStatus();
+   })
+
+   checkStatus = function() {
+    // $scope.timeNow = new Date().toISOString();
+    // console.log($scope.time);
+
+     console.log("checking");
+   var ref = new Firebase("https://flowershop.firebaseio.com")
+   ref.once("value", function(snapshot){
     var data = snapshot.val();
     console.log(data);
     $scope.amhour = data.amStart;
     $scope.lunchBreak = data.wkdayLunch;
     $scope.pmhour = data.pmStart;
     $scope.closingTime = data.wkdayClose;
+    $scope.satamhour = data.satamStart;
+    $scope.satlunchBreak = data.satLunch;
+    $scope.sathour = data.satpmStart;
+    $scope.satclosingTime = data.satClose;
+
     console.log($scope.amhour);
 
 var satTime = angular.element( document.querySelector( '#satHours' ) );
@@ -24,7 +52,14 @@ if(data.satOpen != true) {
 
 }
 
-  $scope.time = new Date().toISOString();
+if(data.satOpen == true) {
+  console.log("open saturday");
+
+  satTime.removeClass('hide');
+  satClose.addClass("hide");
+
+}
+
   var now = new Date();
   var hours = now.getHours();
   var minute = now.getMinutes();
@@ -67,7 +102,7 @@ if (day == 1 || day == 2 ||day == 3 ||day == 4 ||day == 5){
 
 })
 
-
+}
 
   $scope.ownerLogin = function() {
     console.log("hi");
@@ -103,6 +138,15 @@ if (day == 1 || day == 2 ||day == 3 ||day == 4 ||day == 5){
 })
 
 .controller('cloudCtrl', function($scope, dataService) {
+  var ref = new Firebase("https://flowershop.firebaseio.com")
+  ref.once("value", function(snapshot){
+   var data = snapshot.val();
+   console.log(data);
+   $scope.amhour = data.amStart;
+   $scope.lunchBreak = data.wkdayLunch;
+   $scope.pmhour = data.pmStart;
+   $scope.closingTime = data.wkdayClose;
+ })
 
   var yesMenu = angular.element( document.querySelector( '#menuSat' ) );
 
@@ -133,9 +177,6 @@ $scope.openTime = function() {
       mflunch: '',
       mfpm: '',
       mfclose: '',
-      sat: '',
-      sun: '',
-      beback: '',
     }
 
   $scope.saveHours = function() {
@@ -145,6 +186,42 @@ $scope.openTime = function() {
       wkdayLunch: $scope.form.mflunch || '',
       pmStart: $scope.form.mfpm || '',
       wkdayClose: $scope.form.mfclose || '',
+    })
+
+  }
+
+  $scope.satform = {
+      satam: '',
+      satlunch: '',
+      satpm: '',
+      satclose: '',
+    }
+
+  $scope.saveHoursSat = function() {
+    console.log($scope.satform);
+    dataService.addData({
+      satamStart: $scope.form.satam || '',
+      satwkdayLunch: $scope.form.satlunch || '',
+      satpmStart: $scope.form.satpm || '',
+      satwkdayClose: $scope.form.satclose || '',
+    })
+
+  }
+
+  $scope.sunform = {
+      sunam: '',
+      sunlunch: '',
+      sunpm: '',
+      sunclose: '',
+    }
+
+  $scope.saveHoursSat = function() {
+    console.log($scope.satform);
+    dataService.addData({
+      satamStart: $scope.form.satam || '',
+      satwkdayLunch: $scope.form.satlunch || '',
+      satpmStart: $scope.form.satpm || '',
+      satwkdayClose: $scope.form.satclose || '',
     })
 
   }

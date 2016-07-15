@@ -49,7 +49,7 @@ angular.module('app.services', [])
     //       }
 
     var addData = function(data){
-
+console.log("updating?");
         return  firebaseRef.update(data)
         };
 

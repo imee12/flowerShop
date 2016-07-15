@@ -1,62 +1,67 @@
 <ion-view hide-nav-bar="true" title="Cloud" id="page3" class=" ">
     <ion-content padding="true" class="has-header">
 <h1 style="text-align: center">HOURS OF OPERATION</h1>
+  <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.mfam">
+     <div class="col" style="font-size: 20px">M - F AM Open</div>
+     <div class="col">Current Time: {{amhour| date: "h:mm a"}}</div>
+     <div class="col">New Time: {{form.mfam| date: "h:mm a"}}</div>
+ </label>
+ <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.mflunch">
+    <div class="col" style="font-size: 20px">M - F Lunch</div>
+    <div class="col">Current Time: {{lunchBreak| date: "h:mm a"}}</div>
+    <div class="col">New Time: {{form.mflunch| date: "h:mm a"}}</div>
+</label>
+<label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.mfpm">
+   <div class="col" style="font-size: 20px">M - F PM Open</div>
+   <div class="col">Current Time: {{pmStart| date: "h:mm a"}}</div>
+   <div class="col">New Time: {{form.mfpm| date: "h:mm a"}}</div>
+</label>
+<label class="row" style="borde-bottomr: 2px solid black"ion-datetime-picker time am-pm ng-model="form.mfclose">
+   <div class="col" style="font-size: 20px">M - F Close</div>
+   <div class="col">Current Time: {{wkdayClose| date: "h:mm a"}}</div>
+   <div class="col">New Time: {{form.mfclose| date: "h:mm a"}}</div>
+</label>
+
+
 <div ng-click="saveHours()" id="glass" class="ion-android-done glass-icon" style="font-size:35px; margin-right: 5px"></div>
-
-  <label class="item item-input assetItem" ion-datetime-picker time am-pm ng-model="form.mfam">
-     <span class="input-label">Monday through Friday AM Opening Time</span>
-     <strong>{{form.mfam| date: "h:mm a"}}</strong>
-
- <!-- <input type="text" placeholder="Opening Time"> -->
- </label>
-  <label class="item item-input assetItem" ion-datetime-picker time am-pm ng-model="form.mflunch">
-    <span class="input-label">Monday through Friday Lunch</span>
-    <strong>{{form.mflunch| date: "h:mm a"}}</strong>
- </label>
- <label class="item item-input assetItem" ion-datetime-picker time am-pm ng-model="form.mfpm">
-    <span class="input-label">Monday through Friday PM Opening Time</span>
-    <strong>{{form.mfpm| date: "h:mm a"}}</strong>
-  <!--   <input type="text" placeholder="" ng-model="form.mfpm"> -->
- </label>
- <label class="item item-input assetItem" ion-datetime-picker time am-pm ng-model="form.mfclose">
-    <span class="input-label">Monday through Friday PM Closing Time</span>
-    <strong>{{form.mfclose| date: "h:mm a"}}</strong>
-  <!--   <input type="text" placeholder="" ng-model="form.mfpm"> -->
- </label>
- <div class="row">
-   <div>Open Saturday?</div>
-   <ion-radio ng-model="choice" ng-value="'A'" ng-click="yesSat()">Yes</ion-radio>
-  <ion-radio ng-model="choice" ng-value="'B'" ng-click="noSat()">No</ion-radio>
-   <input type="radio" name="vehicle" value="Bike" ng-click="yesSat()">Yes<br>
-  <input type="radio" name="vehicle" value="Car" ng-click="noSat()">No<br>
-
+ <div style="height: 10px"></div>
+   <div class="col" style="font-size: 20px; margin-bottom: 5px; text-align: center">Open Saturday?</div>
+   <div id="saturdayRadios" class="col">
+<div class="row">
+<ion-radio class="col col-50" ng-model="choice" ng-value="'A'" ng-click="yesSat()">Yes</ion-radio>
+<ion-radio class="col" ng-model="choice" ng-value="'B'" ng-click="noSat()">No</ion-radio>
+</div>
+<!--    <label type="radio" name="" value="" ng-click="yesSat()"><br>
+  <span>Yes</span>
+<label for="yes" ng-click="yesSat()">Yes</label>
+ <label type="radio" name="" value="" ng-click="noSat()"><br>
+ <span for="no">No</span>
+ -->
 </div>
  <div id="menuSat"class="hide">
- <label class="item item-input assetItem" ion-datetime-picker time am-pm ng-model="form.mfclose">
-    <span class="input-label">Saturday Opening Time</span>
-    <strong>{{form.satOpen| date: "h:mm a"}}</strong>
-  <!--   <input type="text" placeholder="" ng-model="form.mfpm"> -->
+   <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.satam">
+      <div class="col" style="font-size: 20px">M - F AM Open</div>
+      <div class="col">Current Time: {{satamhour| date: "h:mm a"}}</div>
+      <div class="col">New Time: {{form.satam| date: "h:mm a"}}</div>
+  </label>
+  <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.satlunch">
+     <div class="col" style="font-size: 20px">M - F Lunch</div>
+     <div class="col">Current Time: {{satlunchBreak| date: "h:mm a"}}</div>
+     <div class="col">New Time: {{form.satlunch| date: "h:mm a"}}</div>
  </label>
- <label class="item item-input assetItem" ion-datetime-picker time am-pm ng-model="form.mfclose">
-    <span class="input-label">Saturday Lunch </span>
-    <strong>{{form.satLunch| date: "h:mm a"}}</strong>
-  <!--   <input type="text" placeholder="" ng-model="form.mfpm"> -->
+ <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.satpm">
+    <div class="col" style="font-size: 20px">M - F PM Open</div>
+    <div class="col">Current Time: {{satpmStart| date: "h:mm a"}}</div>
+    <div class="col">New Time: {{form.satpm| date: "h:mm a"}}</div>
  </label>
- <label class="item item-input assetItem" ion-datetime-picker time am-pm ng-model="form.mfclose">
-    <span class="input-label">Saturday PM Opening Time</span>
-    <strong>{{form.mfclose| date: "h:mm a"}}</strong>
-  <!--   <input type="text" placeholder="" ng-model="form.mfpm"> -->
+ <label class="row" style="borde-bottomr: 2px solid black"ion-datetime-picker time am-pm ng-model="form.satclose">
+    <div class="col" style="font-size: 20px">M - F Close</div>
+    <div class="col">Current Time: {{satClose| date: "h:mm a"}}</div>
+    <div class="col">New Time: {{form.satclose| date: "h:mm a"}}</div>
  </label>
- <label class="item item-input assetItem" ion-datetime-picker time am-pm ng-model="form.mfclose">
-    <span class="input-label">Saturday PM Closing Time</span>
-    <strong>{{form.mfclose| date: "h:mm a"}}</strong>
-  <!--   <input type="text" placeholder="" ng-model="form.mfpm"> -->
- </label>
- </div>
- <label class="item item-input assetItem">
-    <span class="input-label">Saturday</span>
-    <input type="text" placeholder="" ng-model="form.sat">
-</label>
+
+
+ <div ng-click="saveHoursSat()" id="glass" class="ion-android-done glass-icon" style="font-size:35px; margin-right: 5px"></div>
 <label class="item item-input assetItem">
    <span class="input-label">Sunday</span>
    <input type="text" placeholder="" ng-model="form.sun">
