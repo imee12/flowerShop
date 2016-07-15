@@ -30,3 +30,40 @@ angular.module('app.services', [])
     }
   };
 })
+
+.factory('dataService', ['$firebase','$q', '$firebaseArray', '$firebaseObject', function($firebase,$q, $firebaseArray, $firebaseObject){
+
+    var firebaseRef= new Firebase("https://flowershop.firebaseio.com");
+
+    var getFirebaseRoot = function(){
+          return firebaseRef;
+    };
+
+
+    // var getHoursNode = function(key){
+    //           var path = "Hours/";
+    //           if (key) {
+    //             path = path + key;
+    //           }
+    //           return getFirebaseRoot().child(path);
+    //       }
+
+    var addData = function(data){
+
+        return  firebaseRef.update(data)
+        };
+
+    var getData = function(callback){
+       return firebaseRef.$asArray();
+      };
+
+
+    var service = {
+          addData : addData,
+          getData: getData
+
+        };
+
+        return service;
+
+    }])

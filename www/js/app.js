@@ -5,7 +5,17 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives', "ion-datetime-picker"])
+angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'firebase', 'ion-datetime-picker'])
+
+.run(function($rootScope){
+    $rootScope.dateValue = new Date();
+    $rootScope.timeValue = new Date();
+    $rootScope.datetimeValue = new Date();
+
+    $rootScope.go = function() {
+        window.open("http://github.com/katemihalikova/ion-datetime-picker", "_blank");
+    };
+})
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

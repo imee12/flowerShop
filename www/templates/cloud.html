@@ -4,13 +4,23 @@
 <div ng-click="saveHours()" id="glass" class="ion-android-done glass-icon" style="font-size:35px; margin-right: 5px"></div>
 
   <label class="item item-input assetItem" ion-datetime-picker time am-pm ng-model="form.mfam">
-     <span class="input-label">Monday through Friday AM Hours</span>
+     <span class="input-label">Monday through Friday Opening Time</span>
      <strong>{{form.mfam| date: "h:mm a"}}</strong>
-     <!-- <input type="text" placeholder="" ng-model="form.mfam"> -->
+
+ <!-- <input type="text" placeholder="Opening Time"> -->
+ </label>
+  <label class="item item-input assetItem" ion-datetime-picker time am-pm ng-model="form.mflunch">
+    <span class="input-label">Monday through Friday Lunch</span>
+    <strong>{{form.mflunch| date: "h:mm a"}}</strong>
  </label>
  <label class="item item-input assetItem" ion-datetime-picker time am-pm ng-model="form.mfpm">
-    <span class="input-label">Monday through Friday PM Hours</span>
+    <span class="input-label">Monday through Friday PM Opening Time</span>
     <strong>{{form.mfpm| date: "h:mm a"}}</strong>
+  <!--   <input type="text" placeholder="" ng-model="form.mfpm"> -->
+ </label>
+ <label class="item item-input assetItem" ion-datetime-picker time am-pm ng-model="form.mfclose">
+    <span class="input-label">Monday through Friday PM Closing Time</span>
+    <strong>{{form.mfclose| date: "h:mm a"}}</strong>
   <!--   <input type="text" placeholder="" ng-model="form.mfpm"> -->
  </label>
  <label class="item item-input assetItem">
