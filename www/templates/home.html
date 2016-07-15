@@ -1,55 +1,61 @@
 <ion-view hide-nav-bar="true" title="Home" id="page1" class=" ">
     <ion-content padding="true" class="has-header">
       <div class="row" style="">
-      <div class="col col-67" style="border: 2px solid black; height: 690px; background-color: rgb(192,216,240)" >
-        <div style="background-color:white; border: 2px solid black; margin: 5px; position: relative">
-          <img src="img/flowershoplogo.png" style="width: 170px; display: inline-block" alt="">
-          <div style="text-align:center; width: 500px; display: inline-block; font-size: 90px; font-family: Courgette; position: absolute; top: 50%; transform: translate(0, -50%)">in bloom</div>
+      <div id="leftside" class="col col-67" style="border: 2px solid black; height: 690px; background-color: rgb(192,216,240)">
+
+        <div class="col" style="background-color:white; border: 2px solid black; position: relative">
+          <div class="row">
+          <img id="inbloomlogo" class="col col-50" src="img/flowershoplogo.png" style="" alt="">
+          <div id="inbloom" class="col" style="">in bloom</div>
+          </div>
         </div>
+
+
         <div style="height: 15px;margin-top: 15px"></div>
-        <div class="col" style="color: white; font-family: Lora; text-align: center; font-size: 145px; margin-top: 25px">{{status}}</div>
+        <div id="statusmsg" class="col" style="">{{status}}</div>
         <div style="height: 20px;margin: 10px"></div>
 
-    <h1 style="text-align: center; margin-top:35px ">HOURS OF OPERATION</h1>
+    <div id="hoursofop"style="">HOURS OF OPERATION</div>
      <!-- <div style="border: 2px solid black" >{{amhour| date: "h:mm a"}}</div> -->
      <div>
        <h4 class="col" style="text-align: center">monday through friday</h4>
-<div class="row">
-       <div class="col" style="font-size: 28px; text-align: center">{{amhour| date: "h:mm a"}}</div>
-       <span style="font-size:20px;text-align: center;font-weight: bold">to</span>
-       <div class="col" style="font-size: 28px;text-align: center">{{lunchBreak| date: "h:mm a"}}</div>
-    <span  style="font-size: 20px;text-align: center; font-weight: bold">AND</span>
-    <div class="col" style="font-size: 28px;text-align: center">{{pmhour| date: "h:mm a"}}</div>
-    <span style="font-size: 20px;text-align: center; font-weight: bold">to</span>
-    <div class="col" style="font-size: 28px;text-align: center">{{closingTime| date: "h:mm a"}}</div>
+<div id="timeList" class="row">
+       <div class="col" style="">{{amhour| date: "h:mm a"}}</div>
+       <span style="">to</span>
+       <div class="col" style="">{{lunchBreak| date: "h:mm a"}}</div>
+    <span  style="">AND</span>
+    <div class="col">{{pmhour| date: "h:mm a"}}</div>
+    <span >to</span>
+    <div class="col">{{closingTime| date: "h:mm a"}}</div>
   </div>
+
   <h4  class="col" style="text-align: center">saturday</h4>
   <div id="closeSat" class="col hide" style="text-align: center; font-size: 28px">closed</div>
   <div id="satHours" class="row">
-         <div class="col" style="font-size: 28px; text-align: center">{{satamhour| date: "h:mm a"}}</div>
-         <span style="font-size:20px;text-align: center;font-weight: bold">to</span>
-         <div class="col" style="font-size: 28px;text-align: center">{{satlunchBreak| date: "h:mm a"}}</div>
-      <span  style="font-size: 20px;text-align: center; font-weight: bold">AND</span>
-      <div class="col" style="font-size: 28px;text-align: center">{{satpmhour| date: "h:mm a"}}</div>
-      <span style="font-size: 20px;text-align: center; font-weight: bold">to</span>
-      <div class="col" style="font-size: 28px;text-align: center">{{satclosingTime| date: "h:mm a"}}</div>
+         <div class="col" style="">{{satamhour| date: "h:mm a"}}</div>
+         <span style="">to</span>
+         <div class="col">{{satlunchBreak| date: "h:mm a"}}</div>
+      <span>AND</span>
+      <div class="col">{{satpmhour| date: "h:mm a"}}</div>
+      <span>to</span>
+      <div class="col" style="">{{satclosingTime| date: "h:mm a"}}</div>
     </div>
     <h4 class="col" style="text-align: center">sunday</h4>
       <div id="closeSun" class="col hide" style="text-align: center; font-size: 28px">closed</div>
     <div id="sunHours" class="row">
-           <div class="col" style="font-size: 28px; text-align: center">{{sunamhour| date: "h:mm a"}}</div>
-           <span style="font-size:20px;text-align: center;font-weight: bold">to</span>
-           <div class="col" style="font-size: 28px;text-align: center">{{sunlunchBreak| date: "h:mm a"}}</div>
-        <span  style="font-size: 20px;text-align: center; font-weight: bold">AND</span>
-        <div class="col" style="font-size: 28px;text-align: center">{{sunpmhour| date: "h:mm a"}}</div>
-        <span style="font-size: 20px;text-align: center; font-weight: bold">to</span>
-        <div class="col" style="font-size: 28px;text-align: center">{{sunclosingTime| date: "h:mm a"}}</div>
+           <div class="col">{{sunamhour| date: "h:mm a"}}</div>
+           <span >to</span>
+           <div class="col" style="">{{sunlunchBreak| date: "h:mm a"}}</div>
+        <span>AND</span>
+        <div class="col">{{sunpmhour| date: "h:mm a"}}</div>
+        <span>to</span>
+        <div class="col">{{sunclosingTime| date: "h:mm a"}}</div>
       </div>
-      
+
 </div>
 
       </div>
-  <div class="col col-33" style="border: 2px solid black; height: 690px">
+  <div id="rightSide"class="col col-33" style="border: 2px solid black; height: 690px">
 <div style="font-family: Lora; background-color:white; border: 2px solid black; padding: 0; position: relative; text-align: center; height: 100px">
 <h1 style="font-size: 30px">{{clock | date:"fullDate" }}</h1>
 <h1 style="font-size: 30px">{{clock | date:"h:mm a" }}</h1>

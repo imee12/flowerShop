@@ -34,14 +34,15 @@ angular.module('app.controllers', [])
     $scope.lunchBreak = data.wkdayLunch;
     $scope.pmhour = data.pmStart;
     $scope.closingTime = data.wkdayClose;
+
     $scope.satamhour = data.satamStart;
     $scope.satlunchBreak = data.satLunch;
-    $scope.sathour = data.satpmStart;
+    $scope.satpmhour = data.satpmStart;
     $scope.satclosingTime = data.satClose;
 
     $scope.sunamhour = data.sunamStart;
     $scope.sunlunchBreak = data.sunLunch;
-    $scope.sunhour = data.sunpmStart;
+    $scope.sunpmhour = data.sunpmStart;
     $scope.sunclosingTime = data.sunClose;
 
     console.log($scope.amhour);
@@ -163,6 +164,16 @@ if (day == 1 || day == 2 ||day == 3 ||day == 4 ||day == 5){
    $scope.lunchBreak = data.wkdayLunch;
    $scope.pmhour = data.pmStart;
    $scope.closingTime = data.wkdayClose;
+
+   $scope.satamhour = data.satamStart;
+   $scope.satlunchBreak = data.satLunch;
+   $scope.satpmhour = data.satpmStart;
+   $scope.satclosingTime = data.satClose;
+
+   $scope.sunamhour = data.sunamStart;
+   $scope.sunlunchBreak = data.sunLunch;
+   $scope.sunpmhour = data.sunpmStart;
+   $scope.sunclosingTime = data.sunClose;
  })
 
   var yesMenu = angular.element( document.querySelector( '#menuSat' ) );
@@ -218,29 +229,29 @@ $scope.openTime = function() {
 
   $scope.saveHours = function() {
     console.log($scope.form);
-    dataService.addData({
-      amStart: $scope.form.mfam || '',
-      wkdayLunch: $scope.form.mflunch || '',
-      pmStart: $scope.form.mfpm || '',
-      wkdayClose: $scope.form.mfclose || '',
+    ref.update({
+      amStart: $scope.form.mfam || $scope.amhour || '',
+      wkdayLunch: $scope.form.mflunch || $scope.lunchBreak || '',
+      pmStart: $scope.form.mfpm || $scope.pmHour || '',
+      wkdayClose: $scope.form.mfclose || $scope.closingTime || '',
     })
 
   }
 
   $scope.satform = {
       satam: '',
-      satlunch: '',
+      satlunchBreak: '',
       satpm: '',
       satclose: '',
     }
 
   $scope.saveHoursSat = function() {
     console.log($scope.satform);
-    dataService.addData({
-      satamStart: $scope.form.satam || '',
-      satwkdayLunch: $scope.form.satlunch || '',
-      satpmStart: $scope.form.satpm || '',
-      satwkdayClose: $scope.form.satclose || '',
+    ref.update({
+      satamStart: $scope.satform.satam || $scope.satamhour || '',
+      satLunch: $scope.satform.satlunch || $scope.satlunchBreak || '',
+      satpmStart: $scope.satform.satpm || $scope.satpmhour || '',
+      satClose: $scope.satform.satclose || $scope.satclosingTime || '',
     })
 
   }
@@ -254,11 +265,11 @@ $scope.openTime = function() {
 
   $scope.saveHoursSun = function() {
     console.log($scope.sunform);
-    dataService.addData({
-      sunamStart: $scope.form.sunam || '',
-      sunLunch: $scope.form.sunlunch || '',
-      sunpmStart: $scope.form.sunpm || '',
-      sunClose: $scope.form.sunclose || '',
+    ref.update({
+      sunamStart: $scope.sunform.sunam || $scope.sunamhour || '',
+      sunLunch: $scope.sunform.sunlunch || $scope.sunlunchBreak || '',
+      sunpmStart: $scope.sunform.sunpm || $scope.sunpmhour || '',
+      sunClose: $scope.sunform.sunclose || $scope.sunclosingTime || '',
     })
 
   }

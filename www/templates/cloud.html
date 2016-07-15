@@ -13,12 +13,12 @@
 </label>
 <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.mfpm">
    <div class="col" style="font-size: 20px">M - F PM Open</div>
-   <div class="col">Current Time: {{pmStart| date: "h:mm a"}}</div>
+   <div class="col">Current Time: {{pmhour| date: "h:mm a"}}</div>
    <div class="col">New Time: {{form.mfpm| date: "h:mm a"}}</div>
 </label>
 <label class="row" style="borde-bottomr: 2px solid black"ion-datetime-picker time am-pm ng-model="form.mfclose">
    <div class="col" style="font-size: 20px">M - F Close</div>
-   <div class="col">Current Time: {{wkdayClose| date: "h:mm a"}}</div>
+   <div class="col">Current Time: {{closingTime| date: "h:mm a"}}</div>
    <div class="col">New Time: {{form.mfclose| date: "h:mm a"}}</div>
 </label>
 
@@ -39,25 +39,25 @@
  -->
 </div>
  <div id="menuSat"class="hide">
-   <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.satam">
+   <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="satform.satam">
       <div class="col" style="font-size: 20px">M - F AM Open</div>
       <div class="col">Current Time: {{satamhour| date: "h:mm a"}}</div>
-      <div class="col">New Time: {{form.satam| date: "h:mm a"}}</div>
+      <div class="col">New Time: {{satform.satam| date: "h:mm a"}}</div>
   </label>
-  <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.satlunch">
+  <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="satform.satlunch">
      <div class="col" style="font-size: 20px">M - F Lunch</div>
      <div class="col">Current Time: {{satlunchBreak| date: "h:mm a"}}</div>
-     <div class="col">New Time: {{form.satlunch| date: "h:mm a"}}</div>
+     <div class="col">New Time: {{satform.satlunch| date: "h:mm a"}}</div>
  </label>
- <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.satpm">
+ <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="satform.satpm">
     <div class="col" style="font-size: 20px">M - F PM Open</div>
-    <div class="col">Current Time: {{satpmStart| date: "h:mm a"}}</div>
-    <div class="col">New Time: {{form.satpm| date: "h:mm a"}}</div>
+    <div class="col">Current Time: {{satpmhour| date: "h:mm a"}}</div>
+    <div class="col">New Time: {{satform.satpm| date: "h:mm a"}}</div>
  </label>
- <label class="row" style="borde-bottomr: 2px solid black"ion-datetime-picker time am-pm ng-model="form.satclose">
+ <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="satform.satclose">
     <div class="col" style="font-size: 20px">M - F Close</div>
-    <div class="col">Current Time: {{satClose| date: "h:mm a"}}</div>
-    <div class="col">New Time: {{form.satclose| date: "h:mm a"}}</div>
+    <div class="col">Current Time: {{satclosingTime| date: "h:mm a"}}</div>
+    <div class="col">New Time: {{satform.satclose| date: "h:mm a"}}</div>
  </label>
  <div ng-click="saveHoursSat()" id="glass" class="ion-android-done glass-icon" style="font-size:35px; margin-right: 5px"></div>
 </div>
@@ -72,25 +72,25 @@
 </div>
 </div>
 <div id="menuSun"class="hide">
-  <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.sunam">
+  <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="sunform.sunam">
      <div class="col" style="font-size: 20px">M - F AM Open</div>
      <div class="col">Current Time: {{sunamhour| date: "h:mm a"}}</div>
-     <div class="col">New Time: {{form.sunam| date: "h:mm a"}}</div>
+     <div class="col">New Time: {{sunform.sunam| date: "h:mm a"}}</div>
  </label>
- <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.sunlunch">
+ <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="sunform.sunlunch">
     <div class="col" style="font-size: 20px">M - F Lunch</div>
     <div class="col">Current Time: {{sunlunchBreak| date: "h:mm a"}}</div>
-    <div class="col">New Time: {{form.sunlunch| date: "h:mm a"}}</div>
+    <div class="col">New Time: {{sunform.sunlunch| date: "h:mm a"}}</div>
 </label>
-<label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.sunpm">
+<label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="sunform.sunpm">
    <div class="col" style="font-size: 20px">M - F PM Open</div>
-   <div class="col">Current Time: {{sunpmStart| date: "h:mm a"}}</div>
-   <div class="col">New Time: {{form.sunpm| date: "h:mm a"}}</div>
+   <div class="col">Current Time: {{sunpmhour| date: "h:mm a"}}</div>
+   <div class="col">New Time: {{sunform.sunpm| date: "h:mm a"}}</div>
 </label>
-<label class="row" style="borde-bottomr: 2px solid black"ion-datetime-picker time am-pm ng-model="form.sunclose">
+<label class="row" style="borde-bottomr: 2px solid black"ion-datetime-picker time am-pm ng-model="sunform.sunclose">
    <div class="col" style="font-size: 20px">M - F Close</div>
-   <div class="col">Current Time: {{sunClose| date: "h:mm a"}}</div>
-   <div class="col">New Time: {{form.sunclose| date: "h:mm a"}}</div>
+   <div class="col">Current Time: {{sunclosingTime| date: "h:mm a"}}</div>
+   <div class="col">New Time: {{sunform.sunclose| date: "h:mm a"}}</div>
 </label>
 <div ng-click="saveHoursSun()" id="glass" class="ion-android-done glass-icon" style="font-size:35px; margin-right: 5px"></div>
 </div>
