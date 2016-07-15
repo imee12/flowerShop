@@ -9775,7 +9775,18 @@ a.button {
   #timeList span, #satHours span, #sunHours span {
     font-size: 20px;
     text-align: center;
-    font-weight: bold; } }
+    font-weight: bold; }
+  #timeClock {
+    font-family: Lora;
+    background-color: white;
+    border: 2px solid black;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    height: 100px; }
+  #timeClock h1 {
+    font-family: Lora;
+    font-size: 30px; } }
 
 @media all and (max-width: 959px) and (min-width: 600px) {
   #inbloom {
@@ -9783,7 +9794,8 @@ a.button {
     font-family: Courgette;
     position: absolute;
     top: 50%;
-    transform: translate(0, -50%); }
+    transform: translate(0, -50%);
+    margin-left: 50px; }
   #inbloomlogo {
     max-width: 50px;
     max-height: 50px;
@@ -9802,7 +9814,10 @@ a.button {
   #timeList, #satHours, #sunHours {
     font-size: 2.5vw;
     text-align: center;
-    /* font-weight: bold; */ } }
+    /* font-weight: bold; */ }
+  #timeClock h1 {
+    font-family: Lora;
+    font-size: 3vw; } }
 
 @media all and (max-width: 599px) and (min-width: 50px) {
   #inbloom {
@@ -9829,4 +9844,7 @@ a.button {
   #timeList, #satHours, #sunHours {
     font-size: 3vw;
     text-align: center;
-    /* font-weight: bold; */ } }
+    /* font-weight: bold; */ }
+  #timeClock h1 {
+    font-family: Lora;
+    font-size: 3.5vw; } }

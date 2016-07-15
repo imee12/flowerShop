@@ -87,6 +87,21 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   font-weight: bold;
 }
 
+#timeClock {
+  font-family: Lora;
+  background-color:white;
+  border: 2px solid black;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  height: 100px
+}
+
+#timeClock h1 {
+  font-family: Lora;
+  font-size: 30px;
+}
+
 }
 
 
@@ -97,6 +112,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     font-family: Courgette;
     position: absolute; top: 50%;
     transform: translate(0, -50%);
+    margin-left: 50px;
   }
 
   #inbloomlogo {
@@ -125,6 +141,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   text-align: center;
   /* font-weight: bold; */
 
+}
+
+#timeClock h1 {
+  font-family: Lora;
+  font-size: 3vw;
 }
 
 }
@@ -162,6 +183,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     font-size: 3vw;
     text-align: center;
     /* font-weight: bold; */
+  }
+
+  #timeClock h1 {
+    font-family: Lora;
+    font-size: 3.5vw;
   }
 
   #rightSide {

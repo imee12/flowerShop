@@ -83,52 +83,100 @@ if(data.sunOpen == true) {
   var minute = now.getMinutes();
   var day = now.getDay();
   console.log(hours, minute, day);
- var changeToday = moment(new Date(1899,11,31,hours,minute)).unix()
+  var changeToday = moment(new Date(1899,11,31,hours,minute)).unix()
   // var changeToday = new Date(1899,11,31,hours,minute);
 
 
   console.log(changeToday);
 
- var lunchTime =  moment(new Date($scope.lunchBreak).toLocaleString()).unix();
-  console.log(lunchTime)
-  var opening = moment(new Date($scope.amhour).toLocaleString()).unix();
-  console.log(opening);
-  var closing =  moment(new Date($scope.closingTime).toLocaleString()).unix();
-  console.log(closing);
+
 if (day == 1 || day == 2 ||day == 3 ||day == 4 ||day == 5){
-  console.log("it's not saturday");
+  $scope.status = "open"
+  console.log("it's m-f");
+  var lunchTime =  moment(new Date($scope.lunchBreak).toLocaleString()).unix();
+   console.log(lunchTime)
+   var opening = moment(new Date($scope.amhour).toLocaleString()).unix();
+   console.log(opening);
+   var pmopening =  moment(new Date($scope.pmhour).toLocaleString()).unix();
+   console.log(pmopening);
+   var closing =  moment(new Date($scope.closingTime).toLocaleString()).unix();
+   console.log(closing);
+
+
   if(changeToday < opening) {
     $scope.status = "closed"
   }
-  if(changeToday < closing) {
+  if(changeToday > closing) {
     $scope.status = "closed"
   }
-  if(changeToday < lunchTime && changeToday > opening) {
+  if(changeToday > lunchTime && changeToday > opening && changeToday < pmopening) {
     $scope.status = "closed"
   }
-  if(changeToday < lunchTime && changeToday > closing) {
-    $scope.status = "closed"
-  }
+
 }
   if(day == 6) {
+    $scope.status = "open"
     console.log("it's Saturday");
+    var lunchTime =  moment(new Date($scope.satlunchBreak).toLocaleString()).unix();
+     console.log(lunchTime)
+     var opening = moment(new Date($scope.satamhour).toLocaleString()).unix();
+     console.log(opening);
+     var pmopening =  moment(new Date($scope.satpmhour).toLocaleString()).unix();
+     console.log(pmopening);
+     var closing =  moment(new Date($scope.satclosingTime).toLocaleString()).unix();
+     console.log(closing);
+
+     if(changeToday < opening) {
+       $scope.status = "closed"
+     }
+     if(changeToday > closing) {
+       $scope.status = "closed"
+     }
+     if(changeToday > lunchTime && changeToday > opening && changeToday < pmopening) {
+       $scope.status = "closed"
+     }
   }
 
   if(day == 7) {
+    $scope.status = "open"
     console.log("it's Sunday!");
+    var lunchTime =  moment(new Date($scope.sunlunchBreak).toLocaleString()).unix();
+     console.log(lunchTime)
+     var opening = moment(new Date($scope.sunamhour).toLocaleString()).unix();
+     console.log(opening);
+     var pmopening =  moment(new Date($scope.sunpmhour).toLocaleString()).unix();
+     console.log(pmopening);
+     var closing =  moment(new Date($scope.sunclosingTime).toLocaleString()).unix();
+     console.log(closing);
+
+     if(changeToday < opening) {
+       $scope.status = "closed"
+     }
+     if(changeToday > closing) {
+       $scope.status = "closed"
+     }
+     if(changeToday > lunchTime && changeToday > opening && changeToday < pmopening) {
+       $scope.status = "closed"
+     }
   }
+
+
 
 })
 
-}
+}// checkStatus END
 
+$scope.areYouClosed = function() {
+
+
+}
   $scope.ownerLogin = function() {
     console.log("hi");
      $state.go('menu.cart');
   }
 
 
-})
+}) // end home controller
 
 .controller('cartCtrl', function($scope, $state) {
   $scope.loginEmail = function(data){
