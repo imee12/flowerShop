@@ -1,0 +1,36 @@
+<ion-view hide-nav-bar="true" title="Cloud" id="page3" class=" ">
+    <ion-content padding="true" class="has-header">
+<h1 style="text-align: center">HOURS OF OPERATION</h1>
+<div ng-click="saveHours()" id="glass" class="ion-android-done glass-icon" style="font-size:35px; margin-right: 5px"></div>
+
+  <label class="item item-input assetItem" ion-datetime-picker time am-pm ng-model="form.mfam">
+     <span class="input-label">Monday through Friday AM Hours</span>
+     <strong>{{form.mfam| date: "h:mm a"}}</strong>
+     <!-- <input type="text" placeholder="" ng-model="form.mfam"> -->
+ </label>
+ <label class="item item-input assetItem" ion-datetime-picker time am-pm ng-model="form.mfpm">
+    <span class="input-label">Monday through Friday PM Hours</span>
+    <strong>{{form.mfpm| date: "h:mm a"}}</strong>
+  <!--   <input type="text" placeholder="" ng-model="form.mfpm"> -->
+ </label>
+ <label class="item item-input assetItem">
+    <span class="input-label">Saturday</span>
+    <input type="text" placeholder="" ng-model="form.sat">
+</label>
+<label class="item item-input assetItem">
+   <span class="input-label">Sunday</span>
+   <input type="text" placeholder="" ng-model="form.sun">
+</label>
+<label class="item item-input assetItem">
+   <span class="input-label">Be Back</span>
+   <input type="text" placeholder="" ng-model="form.beback">
+</label>
+
+
+
+
+
+
+
+    </ion-content>
+</ion-view>
