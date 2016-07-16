@@ -3,12 +3,12 @@ angular.module('app.controllers', [])
 .controller('homeCtrl', function($scope, $state, dataService, $timeout, InstaService) {
 
 
-  //getPhotos = function() {
+  getPhotos = function() {
   InstaService.fetchPopular(function(data){
         $scope.pics = data;
         console.log($scope.pics);
       });
-//}
+}
   $scope.status = "open";
 
   $scope.clock = "loading clock...";
@@ -23,11 +23,12 @@ angular.module('app.controllers', [])
 
   setInterval(function(){
     checkStatus();
-    //getPhotos();
+    // getPhotos();
   }, 5000);
 
    $scope.$on('$ionicView.enter', function() {
      checkStatus();
+     getPhotos();
    })
 
    checkStatus = function() {
@@ -66,6 +67,7 @@ if(data.satOpen != true) {
   console.log("closed saturday");
   satTime.addClass('hide');
   satClose.removeClass("hide");
+  $scope.status = "closed";
 }
 
 if(data.satOpen == true) {
@@ -91,6 +93,7 @@ if(data.sunOpen == true) {
   var hours = now.getHours();
   var minute = now.getMinutes();
   var day = now.getDay();
+  console.log(day);
   console.log(hours, minute, day);
   var changeToday = moment(new Date(1899,11,31,hours,minute)).unix()
   // var changeToday = new Date(1899,11,31,hours,minute);
@@ -135,6 +138,10 @@ if (day == 1 || day == 2 ||day == 3 ||day == 4 ||day == 5){
      var closing =  moment(new Date($scope.satclosingTime).toLocaleString()).unix();
      console.log(closing);
 
+
+     if(data.satOpen != true) {
+       $scope.status = "closed";
+     }
      if(changeToday < opening) {
        $scope.status = "closed"
      }
@@ -169,8 +176,26 @@ if (day == 1 || day == 2 ||day == 3 ||day == 4 ||day == 5){
      }
   }
 
+  var emailBlock = angular.element( document.querySelector( '#emailSubmit' ) );
+  var firstI= angular.element( document.querySelector( '#firstInsta' ) );
+  var secI = angular.element( document.querySelector( '#secInsta' ) );
+
   if($scope.status == "closed") {
+
   console.log("holla if ya hear me");
+   emailBlock.removeClass('hide');
+  //  secI.removeClass('hide');
+     firstI.addClass('none');
+
+}
+
+if($scope.status == "open") {
+
+console.log("holla if ya hear me");
+ emailBlock.addClass('hide');
+//  secI.removeClass('hide');
+firstI.removeClass('none');
+
 
 }
 })// snapshot END
@@ -202,6 +227,7 @@ $scope.reset = function() {
 }
 
 $scope.areYouClosed = function() {
+
 
 
 }

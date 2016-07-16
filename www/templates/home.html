@@ -59,7 +59,7 @@
 <h1>{{clock | date:"fullDate" }}</h1>
 <h1>{{clock | date:"h:mm a" }}</h1>
 </div>
-<div id="emailSubmit" style="border: 2px solid black;height:250px;margin: 10px">
+<div id="emailSubmit" class="hide">
   <div style="height: 20px"></div>
   <div style="padding: 3px; text-align: center; font-size: 22px">Sorry we missed you!</div>
   <div style="padding: 3px; text-align: center">Please leave us your info and we'll get back to you ASAP!</div>
@@ -73,10 +73,14 @@
   </form>
 </div>
 <!-- <div style="border: 2px solid black;height:250px;margin: 10px"> -->
-  <div style="" ng-repeat="p in pics">
-			<a href="{{p.link}}" target="_blank">
-        <img style="height:290px; width: 95%; margin: 10px" ng-src="{{p.images.low_resolution.url}}" /></a>
-		</div>
+<div id="firstInsta" style="" ng-repeat="p in pics | limitTo: 2">
+    <a href="{{p.link}}" target="_blank">
+      <img style="height:250px; width: 95%; margin: 5px" ng-src="{{p.images.low_resolution.url}}" /></a>
+  </div>
+  <!-- <div id="secInsta" class="hide" style="" ng-repeat="p in pics | limitTo: 1">
+      <a href="{{p.link}}" target="_blank">
+      <img style="height:250px; width: 95%; margin: 5px" ng-src="{{p.images.low_resolution.url}}" /></a>
+    </div> -->
 
 <!-- </div> -->
 
