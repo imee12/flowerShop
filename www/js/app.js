@@ -5,9 +5,14 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
+
+
+
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'firebase', 'ion-datetime-picker'])
 
+
 .run(function($rootScope){
+
     $rootScope.dateValue = new Date();
     $rootScope.timeValue = new Date();
     $rootScope.datetimeValue = new Date();
@@ -21,6 +26,10 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+    // var client_id = 292bf2253dc24b83abff990d3668345f;
+    //  var user_id =  3549482147;
+  //  instafeed([292bf2253dc24b83abff990d3668345f], [3549482147]);
+
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);

@@ -9731,6 +9731,12 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.instaPhotos img {
+  width: 300px; }
+
+/* .thankYou {
+  display: none;
+} */
 #saturdayRadios, #sundayRadios {
   /* .radio label:before {
     border-radius: 8px;

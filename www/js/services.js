@@ -1,3 +1,6 @@
+//var ACCESS-TOKEN = "3549482147.acf87e4.3cf07755b49448db889bf0120b4af5d7";
+
+
 angular.module('app.services', [])
 
 
@@ -34,22 +37,20 @@ angular.module('app.services', [])
 .factory('dataService', ['$firebase','$q', '$firebaseArray', '$firebaseObject', function($firebase,$q, $firebaseArray, $firebaseObject){
 
     var firebaseRef= new Firebase("https://flowershop.firebaseio.com");
+  //  var meterRef = new Firebase(firebaseRef + "/Locations/" +
+    var customerRef = new Firebase(firebaseRef + "/Customers/");
 
     var getFirebaseRoot = function(){
           return firebaseRef;
     };
 
-
-    // var getHoursNode = function(key){
-    //           var path = "Hours/";
-    //           if (key) {
-    //             path = path + key;
-    //           }
-    //           return getFirebaseRoot().child(path);
-    //       }
+    var addCustomer = function(data) {
+      console.log("adding you");
+      return customerRef.push(data);
+    }
 
     var addData = function(data){
-console.log("updating?");
+      console.log("updating?");
         return  firebaseRef.update(data)
         };
 
@@ -60,10 +61,31 @@ console.log("updating?");
 
     var service = {
           addData : addData,
-          getData: getData
+          getData: getData,
+          addCustomer: addCustomer
 
         };
 
         return service;
 
     }])
+
+
+    .factory('InstaService', ['$http', function ($http) {
+
+      return {
+        fetchPopular: function (callback){
+        //  var endPoint = "https://api.instagram.com/v1/users/self/?access_token=ACCESS-TOKEN"
+           var endPoint=
+          // '"https://api.instagram.com/v1/users/self/?access_token=" + "token"';
+          "https://api.instagram.com/v1/users/self/media/recent/?access_token=3549482147.acf87e4.3cf07755b49448db889bf0120b4af5d7&c&callback=JSON_CALLBACK&count=4"
+          //  var endPoint=
+          //  "https://api.instagram.com/v1/users/self/?access_token=3549482147.acf87e4.3cf07755b49448db889bf0120b4af5d7";
+
+
+        $http.jsonp(endPoint).success(function(response){
+          callback(response.data);
+        });
+      }
+    }
+    }]);

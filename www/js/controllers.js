@@ -1,6 +1,14 @@
 angular.module('app.controllers', [])
 
-.controller('homeCtrl', function($scope, $state, dataService, $timeout) {
+.controller('homeCtrl', function($scope, $state, dataService, $timeout, InstaService) {
+
+
+  //getPhotos = function() {
+  InstaService.fetchPopular(function(data){
+        $scope.pics = data;
+        console.log($scope.pics);
+      });
+//}
   $scope.status = "open";
 
   $scope.clock = "loading clock...";
@@ -15,6 +23,7 @@ angular.module('app.controllers', [])
 
   setInterval(function(){
     checkStatus();
+    //getPhotos();
   }, 5000);
 
    $scope.$on('$ionicView.enter', function() {
@@ -160,11 +169,37 @@ if (day == 1 || day == 2 ||day == 3 ||day == 4 ||day == 5){
      }
   }
 
+  if($scope.status == "closed") {
+  console.log("holla if ya hear me");
 
-
-})
+}
+})// snapshot END
 
 }// checkStatus END
+
+
+
+var thanks = angular.element( document.querySelector( '#thankYou' ) );
+
+$scope.msg = {};
+
+$scope.savemsg = function() {
+  console.log($scope.msg);
+  dataService.addCustomer($scope.msg);
+  thanks.removeClass('hide');
+  $scope.reset();
+  $scope.clearThanks();
+}
+
+$scope.clearThanks = function() {
+setTimeout(function(){
+  thanks.addClass('hide');
+}, 5000);
+}
+
+$scope.reset = function() {
+  $scope.msg = {};
+}
 
 $scope.areYouClosed = function() {
 
