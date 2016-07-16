@@ -6,7 +6,7 @@ angular.module('app.services', [])
 
 // .factory('dataService', ['$firebase','$q', '$firebaseArray', '$firebaseObject', function($firebase,$q, $firebaseArray, $firebaseObject){
 
-.factory('Auth', ['$firebaseAuth', 'Root',function($firebaseAuth, Root){
+.factory('Auth', function($firebaseAuth, Root, $timeout){
   var auth = $firebaseAuth(Root);
 
 
@@ -34,7 +34,7 @@ angular.module('app.services', [])
       });
     }
   };
-  }])
+  })
 
 .factory('dataService', ['$firebase','$q', '$firebaseArray', '$firebaseObject', function($firebase,$q, $firebaseArray, $firebaseObject){
 

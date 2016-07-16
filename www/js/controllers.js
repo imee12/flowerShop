@@ -3,6 +3,7 @@ angular.module('app.controllers', [])
 .controller('homeCtrl', function($scope, $state, dataService, $timeout, InstaService) {
 
 
+
   getPhotos = function() {
   InstaService.fetchPopular(function(data){
         $scope.pics = data;
@@ -54,6 +55,7 @@ angular.module('app.controllers', [])
     $scope.sunlunchBreak = data.sunLunch;
     $scope.sunpmhour = data.sunpmStart;
     $scope.sunclosingTime = data.sunClose;
+    $scope.errandStatus = data.errand;
 
     console.log($scope.amhour);
 
@@ -61,7 +63,16 @@ var satTime = angular.element( document.querySelector( '#satHours' ) );
 var satClose = angular.element( document.querySelector( '#closeSat' ) );
 var sunTime = angular.element( document.querySelector( '#sunHours' ) );
 var sunClose = angular.element( document.querySelector( '#closeSun' ) );
+var stats = angular.element( document.querySelector( '#statusmsg' ) );
 
+if(data.errand == true) {
+  stats.addClass('hide');
+
+}
+if(data.errand != true) {
+  stats.removeClass('hide');
+
+}
 
 if(data.satOpen != true) {
   console.log("closed saturday");
@@ -275,26 +286,70 @@ $scope.areYouClosed = function() {
   };
 })
 
-.controller('cloudCtrl', function($scope, dataService, store, Auth) {
+.controller('cloudCtrl', function($scope, dataService, store, $state, $ionicPopup) {
 
-//TODO: CHECK FOR CORDOVA, IF NO HIDE EMAIL FUNCTION
-//   $scope.$on('$ionicView.enter', function() {
-//
-//   try {
-//     cordova.plugins.email.isAvailable(
-//     function (isAvailable) {
-//        alert('Service is not available');
-//     }
-// );
-// } catch (e) {
-//
-// if(e instanceof ReferenceError == true){
-//   hideEmail();
-//
-// }
-// }
-// })
+  // $scope.errand = function() {
+  //   $scope.showConfirm();
+  // }
 
+  $scope.errand = function() {
+   var confirmPopup = $ionicPopup.confirm({
+     title: 'Heading out for a delivery?',
+     template: 'I will change the sign to CLOSED for 15 mins.'
+   });
+
+   confirmPopup.then(function(res) {
+     if(res) {
+       console.log('You are sure');
+       $scope.errandTimer();
+     } else {
+       console.log('You are not sure');
+     }
+   });
+ }
+
+ var stats = angular.element( document.querySelector( '#statusmsg' ) );
+
+ $scope.errandTimer = function() {
+   console.log("out for errand");
+   startTimer();
+   dataService.addData({
+     errand: true
+ })
+ }
+
+ startTimer = function () {
+   setTimeout(function(){
+     thanks.addClass('hide');
+   }, 9000);
+
+ }
+  // $scope.datax = {};
+  //
+  // // An elaborate, custom popup
+  // var myPopup = $ionicPopup.show({
+  //   template: '<input type="string" ng-model="datax.mins">',
+  //   title: 'Heading out for a delivery?',
+  //   subTitle: 'How long will you be?',
+  //   scope: $scope,
+  //   buttons: [
+  //     { text: 'Cancel' },
+  //     {
+  //       text: '<b>Save</b>',
+  //       type: 'button-positive',
+  //       onTap: function(e) {
+  //         if (!$scope.datax.mins) {
+  //           //don't allow the user to close unless he enters wifi password
+  //           e.preventDefault();
+  //         } else {
+  //           console.log($scope.datax.mins);
+  //           return $scope.datax.mins;
+  //         }
+  //       }
+  //     }
+  //   ]
+  // })
+//}//
 var cordaE = angular.element( document.querySelector( '#cordoEm' ) );
 
   hideEmail = function () {
@@ -462,7 +517,8 @@ $scope.currentCustomer = store.get('currentCustomer')
   } catch (e) {
 
       if(e instanceof ReferenceError == true){
-      alert("This email service is not available on you current device.")
+      // alert("This email service is not available on you current device.")
+      $scope.showAlert();
 
       } else {
     //  $scope.sendEmail();
@@ -482,6 +538,17 @@ $scope.currentCustomer = store.get('currentCustomer')
 //    });
 //
 // }
+
+$scope.showAlert = function() {
+   var alertPopup = $ionicPopup.alert({
+     title: 'Oh no!',
+     template: 'This email service is not available on you current device.'
+   });
+
+   alertPopup.then(function(res) {
+     console.log('Thank you for not eating my delicious ice cream cone');
+   });
+ };
 
 $scope.deleteCust = function(i) {
   console.log("delete yo");
@@ -503,13 +570,8 @@ $scope.deleteCust = function(i) {
   }
 
   $scope.logout = function (data) {
-    Auth.logout(data);
-    console.log('User has been logged out');
-  //  $ionicHistory.clearCache();
-  //  $ionicHistory.clearHistory();
-    //ref.unauth();
-
-    $scope.appState.user = undefined;
+    ref.unauth();
+    console.log("bye");
     $state.go('menu.home');
   };
 

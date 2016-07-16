@@ -9731,6 +9731,20 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+#icon {
+  display: inline-block; }
+
+.popup-body {
+  overflow: inherit !important;
+  text-align: center;
+  position: relative; }
+
+.popup-buttons .button {
+  background-color: #c0d8f0;
+  font-size: 20px;
+  color: black;
+  border-color: #c0d8f0; }
+
 .bar {
   background-image: none !important; }
 
@@ -9770,9 +9784,13 @@ a.button {
 .instaPhotos img {
   width: 300px; }
 
-/* .thankYou {
-  display: none;
-} */
+#thankYou {
+  text-align: center;
+  background-color: white;
+  border-radius: 2px;
+  border: 2px #c0d8f0 solid;
+  font-family: Lora; }
+
 #saturdayRadios, #sundayRadios {
   /* .radio label:before {
     border-radius: 8px;
@@ -9836,7 +9854,7 @@ a.button {
 
 @media all and (max-width: 959px) and (min-width: 600px) {
   #inbloom {
-    font-size: 10vw;
+    font-size: 9vw;
     font-family: Courgette;
     position: absolute;
     top: 50%;
@@ -9850,7 +9868,7 @@ a.button {
     color: white;
     font-family: Lora;
     text-align: center;
-    font-size: 20vw;
+    font-size: 19vw;
     margin-top: 25px; }
   #hoursofop {
     font-family: Lora;

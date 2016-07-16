@@ -21,6 +21,26 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+$bloomblue: rgb(192,216,240);
+
+
+
+#icon {
+  display:inline-block;
+}
+.popup-body {
+    overflow: inherit !important;
+    text-align: center;
+    position: relative;
+}
+
+.popup-buttons .button {
+    background-color: $bloomblue;
+    font-size: 20px;
+    color: black;
+    border-color:  $bloomblue;
+
+}
 
 .bar { background-image: none !important; }
 
@@ -30,7 +50,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   margin-right: 5px;
   border: 2px solid gray;
   padding: 2px;text-align: center;
-  background-color: rgb(192,216,240);
+  background-color:  $bloomblue;
   border-radius: 3%
 }
 
@@ -69,9 +89,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   width: 300px;
 }
 
-/* .thankYou {
-  display: none;
-} */
+ #thankYou {
+  text-align: center;
+  background-color: white;
+  border-radius: 2px;
+  border: 2px $bloomblue solid;
+  font-family: Lora;
+
+}
 
 #saturdayRadios, #sundayRadios {
   label {
@@ -166,7 +191,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 @media all and (max-width: 959px) and (min-width: 600px) {
 #inbloom{
-    font-size: 10vw;
+    font-size: 9vw;
     font-family: Courgette;
     position: absolute; top: 50%;
     transform: translate(0, -50%);
@@ -183,7 +208,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   color: white;
   font-family: Lora;
   text-align: center;
-  font-size: 20vw;
+  font-size: 19vw;
   margin-top: 25px
 }
 

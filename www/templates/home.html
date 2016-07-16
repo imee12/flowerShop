@@ -76,8 +76,8 @@
 </div>
 <!-- <div style="border: 2px solid black;height:250px;margin: 10px"> -->
 <div id="firstInsta" style="" ng-repeat="p in pics | limitTo: 2">
-    <a href="{{p.link}}" target="_blank">
-      <img class="inPhotos col" style="" ng-src="{{p.images.low_resolution.url}}" /></a>
+    <div href="{{p.link}}" target="_blank">
+      <img class="inPhotos col" style="" ng-src="{{p.images.low_resolution.url}}" ></div>
   </div>
   <!-- <div id="secInsta" class="hide" style="" ng-repeat="p in pics | limitTo: 1">
       <a href="{{p.link}}" target="_blank">
