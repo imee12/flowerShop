@@ -3,7 +3,7 @@
       <div class="row" style="">
       <div id="leftside" class="col col-67" style="border: 2px solid black; height: 690px; background-color: rgb(192,216,240)">
 
-        <div class="col" style="background-color:white; border: 2px solid black; position: relative">
+        <div class="col" style="background-color:#fafafa; border: 2px solid black; position: relative; border-radius: 4px;">
           <div class="row">
           <img id="inbloomlogo" class="col col-50" src="img/flowershoplogo.png" style="" alt="">
           <div id="inbloom" class="col" style="">in bloom</div>
@@ -54,24 +54,22 @@
 </div>
 
       </div>
-  <div id="rightSide"class="col col-33" style="border: 2px solid black; height: 690px">
-<div id="timeClock" style="font-family: Lora; background-color:white; border: 2px solid black; padding: 0; position: relative; text-align: center; height: 100px">
-<h1>{{clock | date:"fullDate" }}</h1>
-<h1>{{clock | date:"h:mm a" }}</h1>
+  <div id="rightSide"class="col col-33" style="border: 2px solid black; height: 690px; background-color:#ededed">
+<div id="timeClock" style="font-family: Lora; background-color:black;border: 2px solid black; padding: 0; position: relative; text-align: center; height: 90px; border-radius: 2px">
+<h1 style="padding: 2px; color: #ffff7f">{{clock | date:"fullDate" }}</h1>
+<h1 style="color: #ffff7f">{{clock | date:"h:mm a" }}</h1>
 </div>
 <div id="emailSubmit" class="hide">
   <div style="height: 20px"></div>
   <div style="padding: 3px; text-align: center; font-size: 22px">Sorry we missed you!</div>
   <div style="padding: 3px; text-align: center">Please leave us your info and we'll get back to you ASAP!</div>
-  <form class="formMsg" style="padding: 10px">
+  <form class="formMsg col" style="padding: 10px; ">
       <div class="">
         <input class="col" placeholder="Name" ng-model="msg.name">
         <input class="col" placeholder="Email Address" ng-model="msg.email">
         <input class="col" placeholder="Phone Number" ng-model="msg.num">
- 
- <!-- <input class="col" placeholder="Phone Number" ng-model="msg.num" type='tel' pattern='[+]d{2}[(]d{2}[)]d{4}[-]d{4}' title=''> -->
 
-     <div ng-click="savemsg()" id="glass" class="" style="border: 2px solid black; font-size:20px; padding: 2px; text-align: center">SEND</div>
+     <div ng-click="savemsg()" id="glass" class="" style="border: 2px solid black; font-size:20px; padding: 2px; text-align: center;  background-color: rgb(192,216,240)">SEND</div>
         <div id="thankYou" class="hide">THANK YOU! WE WILL CONTACT YOU SOON!</div>
       </div>
   </form>
@@ -79,7 +77,7 @@
 <!-- <div style="border: 2px solid black;height:250px;margin: 10px"> -->
 <div id="firstInsta" style="" ng-repeat="p in pics | limitTo: 2">
     <a href="{{p.link}}" target="_blank">
-      <img style="height:250px; width: 95%; margin: 5px" ng-src="{{p.images.low_resolution.url}}" /></a>
+      <img class="inPhotos col" style="" ng-src="{{p.images.low_resolution.url}}" /></a>
   </div>
   <!-- <div id="secInsta" class="hide" style="" ng-repeat="p in pics | limitTo: 1">
       <a href="{{p.link}}" target="_blank">

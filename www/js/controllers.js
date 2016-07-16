@@ -1,45 +1,5 @@
 angular.module('app.controllers', [])
 
-// .controller("AppCtrl", function($scope, $q, Auth, $state, $firebaseObject, $ionicHistory, userService) {
-//
-//
-//   $scope.click = function() {
-//     console.log("clicking");
-//   }
-//
-//   var ref = new Firebase("https://flowershop.firebaseio.com");
-//   // var userRef = ref.child('users');
-//   var authData = ref.getAuth();
-//
-//     $scope.appState = {
-//     user: undefined,
-//     };
-//
-//     $scope.refreshAuthData = function() {
-//     var dfd = $q.defer();
-//     var authData = ref.getAuth();
-//
-//     if (authData) {
-//     var loggedInUserRef = new Firebase(ref + "/users/" + authData.uid);
-//     var user = $firebaseObject(loggedInUserRef);
-//     userService.set('user', user)
-//     //  console.log('hello from userSet')
-//     // $scope.appState.user = user;
-//     dfd.resolve(user);
-//     //    console.log(user);
-//     $scope.$apply()
-//
-//     } else {
-//     dfd.reject();
-//     $state.go('app.login');
-//     }
-//
-//     return dfd.promise
-//     }
-//
-//
-
-
 .controller('homeCtrl', function($scope, $state, dataService, $timeout, InstaService) {
 
 
@@ -280,6 +240,7 @@ $scope.areYouClosed = function() {
 }) // end home controller
 
 .controller('cartCtrl', function($scope, $state) {
+ $scope.$on('$ionicView.enter', function() {
     var ref = new Firebase("https://flowershop.firebaseio.com");
 
     var authData = ref.getAuth();
@@ -287,7 +248,7 @@ $scope.areYouClosed = function() {
       if (authData) {
           $state.go('menu.cloud');
       }
-
+})
 
   $scope.loginEmail = function(data){
     var ref = new Firebase("https://flowershop.firebaseio.com");
@@ -314,7 +275,7 @@ $scope.areYouClosed = function() {
   };
 })
 
-.controller('cloudCtrl', function($scope, dataService, store) {
+.controller('cloudCtrl', function($scope, dataService, store, Auth) {
 
 //TODO: CHECK FOR CORDOVA, IF NO HIDE EMAIL FUNCTION
 //   $scope.$on('$ionicView.enter', function() {
@@ -522,6 +483,12 @@ $scope.currentCustomer = store.get('currentCustomer')
 //
 // }
 
+$scope.deleteCust = function(i) {
+  console.log("delete yo");
+  dataService.deleteData(i);
+
+}
+
   $scope.startCall = function () {
     $scope.currentCustomer = store.get('currentCustomer')
 
@@ -533,13 +500,19 @@ $scope.currentCustomer = store.get('currentCustomer')
     console.log($scope.nextThree);
     $scope.four =   $scope.currentCustomer.num.slice(6,11);
     console.log($scope.four);
-
-
-
-
-
-
   }
+
+  $scope.logout = function (data) {
+    Auth.logout(data);
+    console.log('User has been logged out');
+  //  $ionicHistory.clearCache();
+  //  $ionicHistory.clearHistory();
+    //ref.unauth();
+
+    $scope.appState.user = undefined;
+    $state.go('menu.home');
+  };
+
 
 //   var customerRef = new Firebase("https://flowershop.firebaseio.com/Customers")
 //   customerRef.once("value", function(snapshot){

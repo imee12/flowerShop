@@ -4,7 +4,9 @@
 angular.module('app.services', [])
 
 
-.factory('Auth', function($firebaseAuth, Root, $timeout){
+// .factory('dataService', ['$firebase','$q', '$firebaseArray', '$firebaseObject', function($firebase,$q, $firebaseArray, $firebaseObject){
+
+.factory('Auth', ['$firebaseAuth', 'Root',function($firebaseAuth, Root){
   var auth = $firebaseAuth(Root);
 
 
@@ -32,7 +34,7 @@ angular.module('app.services', [])
       });
     }
   };
-})
+  }])
 
 .factory('dataService', ['$firebase','$q', '$firebaseArray', '$firebaseObject', function($firebase,$q, $firebaseArray, $firebaseObject){
 
@@ -64,12 +66,21 @@ angular.module('app.services', [])
 
       };
 
+    var deleteData = function(i, index, event){
+          console.log(i);
+
+        var custRef = new Firebase(firebaseRef + "/Customers/" + i.$id);
+          custRef.remove();
+
+  };
+
 
     var service = {
           addData : addData,
           getData: getData,
           addCustomer: addCustomer,
-          getCustomers: getCustomers
+          getCustomers: getCustomers,
+          deleteData: deleteData
 
         };
 

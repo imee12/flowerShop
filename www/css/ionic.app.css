@@ -9731,6 +9731,9 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.bar {
+  background-image: none !important; }
+
 .hoursButton {
   font-size: 18px;
   margin-right: 5px;
@@ -9760,8 +9763,9 @@ a.button {
 
 #emailSubmit {
   border: 2px solid black;
-  height: 250px;
-  margin: 10px; }
+  height: 270px;
+  margin: 10px;
+  background-color: white; }
 
 .instaPhotos img {
   width: 300px; }
@@ -9824,7 +9828,11 @@ a.button {
     height: 100px; }
   #timeClock h1 {
     font-family: Lora;
-    font-size: 30px; } }
+    font-size: 25px; }
+  .inPhotos {
+    height: 250px;
+    width: 95%;
+    margin: 5px; } }
 
 @media all and (max-width: 959px) and (min-width: 600px) {
   #inbloom {
@@ -9855,9 +9863,16 @@ a.button {
     /* font-weight: bold; */ }
   #timeClock h1 {
     font-family: Lora;
-    font-size: 3vw; } }
+    font-size: 2.5vw; }
+  .inPhotos {
+    max-width: 300px;
+    max-height: 200px;
+    margin: 5px;
+    padding: 5px; } }
 
 @media all and (max-width: 599px) and (min-width: 50px) {
+  #emailSubmit {
+    display: none; }
   #inbloom {
     font-size: 8vw;
     font-family: Courgette;
