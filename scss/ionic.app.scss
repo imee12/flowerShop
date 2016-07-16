@@ -22,7 +22,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 
 
+#cordoEm {
+  margin-left: 25px;
+}
 
+.white {
+  color: white;
+}
 
 .none {
   display: none;

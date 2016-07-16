@@ -29,7 +29,7 @@
    <div id="saturdayRadios" class="col">
 <div class="row">
 <ion-radio class="col col-50" ng-model="choice" ng-value="'yesSat'" ng-click="yesSat()">Yes</ion-radio>
-<ion-radio class="col" ng-model="choice" ng-value="'noSat'" ng-click="noSat()">No</ion-radio>
+<ion-radio class="col col-50" ng-model="choice" ng-value="'noSat'" ng-click="noSat()">No</ion-radio>
 </div>
 <!--    <label type="radio" name="" value="" ng-click="yesSat()"><br>
   <span>Yes</span>
@@ -68,7 +68,7 @@
   <div id="sundayRadios" class="col">
 <div class="row">
 <ion-radio class="col col-50" ng-model="choice" ng-value="'yesSun'" ng-click="yesSun()">Yes</ion-radio>
-<ion-radio class="col" ng-model="choice" ng-value="'noSun'" ng-click="noSun()">No</ion-radio>
+<ion-radio class="col col-50" ng-model="choice" ng-value="'noSun'" ng-click="noSun()">No</ion-radio>
 </div>
 </div>
 <div id="menuSun"class="hide">
@@ -95,6 +95,17 @@
 <div ng-click="saveHoursSun()" id="glass" class="ion-android-done glass-icon" style="font-size:35px; margin-right: 5px"></div>
 </div>
 
+<div class="col" style="font-size: 20px; margin-bottom: 5px; text-align: center">View Missed Customers?</div>
+  <div ng-click="selectCurrentCustomer(i)" class="col"style="border:1px black solid" ng-repeat="i in customers">
+    <div style="font-size: 15px; padding: 2px; margin: 5px; font-weight:bold">Name: {{i.name}}</div>
+    <div style="font-size: 15px; padding: 2px; margin: 5px;">Phone Number: {{i.num}}</div>
+
+    <div style="font-size: 15px; padding: 2px; margin: 5px;">Email: {{i.email}}
+    <span id="cordoEm" ng-click="selectCurrentCustomer(i); checkCordovaAvail()" style="">Email?</span>
+    </div>
+
+
+  </div>
 
 <!-- <label class="item item-input assetItem">
    <span class="input-label">Sunday</span>

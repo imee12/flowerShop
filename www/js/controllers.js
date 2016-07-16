@@ -1,5 +1,45 @@
 angular.module('app.controllers', [])
 
+// .controller("AppCtrl", function($scope, $q, Auth, $state, $firebaseObject, $ionicHistory, userService) {
+//
+//
+//   $scope.click = function() {
+//     console.log("clicking");
+//   }
+//
+//   var ref = new Firebase("https://flowershop.firebaseio.com");
+//   // var userRef = ref.child('users');
+//   var authData = ref.getAuth();
+//
+//     $scope.appState = {
+//     user: undefined,
+//     };
+//
+//     $scope.refreshAuthData = function() {
+//     var dfd = $q.defer();
+//     var authData = ref.getAuth();
+//
+//     if (authData) {
+//     var loggedInUserRef = new Firebase(ref + "/users/" + authData.uid);
+//     var user = $firebaseObject(loggedInUserRef);
+//     userService.set('user', user)
+//     //  console.log('hello from userSet')
+//     // $scope.appState.user = user;
+//     dfd.resolve(user);
+//     //    console.log(user);
+//     $scope.$apply()
+//
+//     } else {
+//     dfd.reject();
+//     $state.go('app.login');
+//     }
+//
+//     return dfd.promise
+//     }
+//
+//
+
+
 .controller('homeCtrl', function($scope, $state, dataService, $timeout, InstaService) {
 
 
@@ -24,7 +64,7 @@ angular.module('app.controllers', [])
   setInterval(function(){
     checkStatus();
     // getPhotos();
-  }, 5000);
+  }, 9000);
 
    $scope.$on('$ionicView.enter', function() {
      checkStatus();
@@ -240,6 +280,15 @@ $scope.areYouClosed = function() {
 }) // end home controller
 
 .controller('cartCtrl', function($scope, $state) {
+    var ref = new Firebase("https://flowershop.firebaseio.com");
+
+    var authData = ref.getAuth();
+    console.log(authData);
+      if (authData) {
+          $state.go('menu.cloud');
+      }
+
+
   $scope.loginEmail = function(data){
     var ref = new Firebase("https://flowershop.firebaseio.com");
    console.log(data);
@@ -250,7 +299,8 @@ $scope.areYouClosed = function() {
     }, function(error, authData) {
       if (error) {
 
-    $scope.loginFailed();
+    //$scope.loginFailed();
+    console.log("error");
 
     }  else {
 
@@ -264,7 +314,34 @@ $scope.areYouClosed = function() {
   };
 })
 
-.controller('cloudCtrl', function($scope, dataService) {
+.controller('cloudCtrl', function($scope, dataService, store) {
+
+//TODO: CHECK FOR CORDOVA, IF NO HIDE EMAIL FUNCTION
+//   $scope.$on('$ionicView.enter', function() {
+//
+//   try {
+//     cordova.plugins.email.isAvailable(
+//     function (isAvailable) {
+//        alert('Service is not available');
+//     }
+// );
+// } catch (e) {
+//
+// if(e instanceof ReferenceError == true){
+//   hideEmail();
+//
+// }
+// }
+// })
+
+var cordaE = angular.element( document.querySelector( '#cordoEm' ) );
+
+  hideEmail = function () {
+    var cordaE = angular.element( document.querySelector( '#cordoEm' ) );
+
+console.log("there is an error");
+cordaE.removeClass('hide');
+}
   var ref = new Firebase("https://flowershop.firebaseio.com")
   ref.once("value", function(snapshot){
    var data = snapshot.val();
@@ -382,6 +459,81 @@ $scope.openTime = function() {
     })
 
   }
+
+  $scope.customers = dataService.getCustomers();
+
+  if (store.get('currentCustomer')) {
+     $scope.currentCustomer = store.get('currentCustomer')
+   }
+   $scope.selectCurrentCustomer = function (i) {
+   //  $scope.currentMember.firstName = currentMember.firstName;
+   //StorageService.add(currentMember);
+   if($scope.currentCustomer) {
+     $scope.currentCustomer = ''
+   }
+     store.set('currentCustomer', i);
+       console.log(i.email)
+       console.log(i.num);
+   }
+
+$scope.checkCordovaAvail = function() {
+$scope.currentCustomer = store.get('currentCustomer')
+    try {
+
+      cordova.plugins.email.open({
+      to:      $scope.currentCustomer.email,
+      subject: 'Thanks for Stopping By in bloom!',
+      body:    "<p>Sorry we missed you!<p><p>Please let me know how we can help!</p><p>in bloom<p>"
+    //  body:    "<p>Sorry we missed you!<p> <br> <p>Please let me know how I can help!</p>"
+   });
+  } catch (e) {
+
+      if(e instanceof ReferenceError == true){
+      alert("This email service is not available on you current device.")
+
+      } else {
+    //  $scope.sendEmail();
+  }
+}
+}
+
+  $scope.sendEmail = function(){
+    $scope.currentCustomer = store.get('currentCustomer')
+    console.log( $scope.currentCustomer.email);
+      cordova.plugins.email.open({
+      to:      $scope.currentCustomer.email,
+      //cc:      'erika@mustermann.de',
+    //  bcc:     ['john@doe.com', 'jane@doe.com'],
+      subject: 'Thanks for Stopping By in bloom!',
+      body:    "<p>Sorry we missed you!<p><p>Please let me know how we can help!</p><p>in bloom<p>"
+   });
+
+}
+
+  $scope.startCall = function () {
+    $scope.currentCustomer = store.get('currentCustomer')
+
+    console.log($scope.currentCustomer.num);
+    //$scope.currentCustomer.num = phoneNumber
+    $scope.three =   $scope.currentCustomer.num.slice(0,3);
+    console.log($scope.three);
+    $scope.nextThree =   $scope.currentCustomer.num.slice(3,6);
+    console.log($scope.nextThree);
+    $scope.four =   $scope.currentCustomer.num.slice(6,11);
+    console.log($scope.four);
+
+
+
+
+
+
+  }
+
+//   var customerRef = new Firebase("https://flowershop.firebaseio.com/Customers")
+//   customerRef.once("value", function(snapshot){
+//    $scope.customers = snapshot.val();
+//    console.log($scope.customers);
+// })
 
 })
 

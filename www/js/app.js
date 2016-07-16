@@ -8,7 +8,7 @@
 
 
 
-angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'firebase', 'ion-datetime-picker'])
+angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'firebase', 'ion-datetime-picker', 'angular-storage'])
 
 
 .run(function($rootScope){

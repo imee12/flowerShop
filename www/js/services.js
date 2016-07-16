@@ -58,11 +58,18 @@ angular.module('app.services', [])
        return firebaseRef.$asArray();
       };
 
+    var getCustomers = function(callback){
+      // return customerRef.$asArray();
+       return $firebaseArray(customerRef);
+
+      };
+
 
     var service = {
           addData : addData,
           getData: getData,
-          addCustomer: addCustomer
+          addCustomer: addCustomer,
+          getCustomers: getCustomers
 
         };
 

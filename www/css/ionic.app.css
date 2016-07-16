@@ -9731,6 +9731,12 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+#cordoEm {
+  margin-left: 25px; }
+
+.white {
+  color: white; }
+
 .none {
   display: none; }
 

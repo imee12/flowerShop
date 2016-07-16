@@ -66,8 +66,12 @@
   <form class="formMsg" style="padding: 10px">
       <div class="">
         <input class="col" placeholder="Name" ng-model="msg.name">
-        <input class="col" placeholder="Email Address or Phone Number" ng-model="msg.num">
-        <div ng-click="savemsg()" id="glass" class="" style="border: 2px solid black; font-size:20px; padding: 2px; text-align: center">SEND</div>
+        <input class="col" placeholder="Email Address" ng-model="msg.email">
+        <input class="col" placeholder="Phone Number" ng-model="msg.num">
+ 
+ <!-- <input class="col" placeholder="Phone Number" ng-model="msg.num" type='tel' pattern='[+]d{2}[(]d{2}[)]d{4}[-]d{4}' title=''> -->
+
+     <div ng-click="savemsg()" id="glass" class="" style="border: 2px solid black; font-size:20px; padding: 2px; text-align: center">SEND</div>
         <div id="thankYou" class="hide">THANK YOU! WE WILL CONTACT YOU SOON!</div>
       </div>
   </form>

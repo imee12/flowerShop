@@ -8,6 +8,7 @@
   "dependencies": {
     "ionic-timepicker": "~0.5.1",
     "ion-datetime-picker": "~0.3.0",
-    "moment": "~2.14.1"
+    "moment": "~2.14.1",
+    "a0-angular-storage": "~0.0.15"
   }
 }
