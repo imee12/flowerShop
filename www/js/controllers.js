@@ -1,7 +1,7 @@
 angular.module('app.controllers', [])
 
 .controller('homeCtrl', function($scope, $state, dataService, $timeout, InstaService) {
-
+$scope.status = "open";
 
 
   getPhotos = function() {
@@ -10,8 +10,22 @@ angular.module('app.controllers', [])
         console.log($scope.pics);
       });
 }
-  $scope.status = "open";
 
+
+
+
+  startdaTimer = function(){
+    var stats = angular.element( document.querySelector( '#statusmsg' ) );
+    var errs = angular.element( document.querySelector( '#errandmsg' ) );
+    console.log("you starting?");
+    setTimeout(function(){
+      stats.removeClass('hide');
+      errs.addClass('hide');
+      dataService.addData({
+        errand: false
+    })
+  }, 50000);
+  }
   $scope.clock = "loading clock...";
       $scope.tickInterval = 1000
 
@@ -33,8 +47,6 @@ angular.module('app.controllers', [])
    })
 
    checkStatus = function() {
-    // $scope.timeNow = new Date().toISOString();
-    // console.log($scope.time);
 
      console.log("checking");
    var ref = new Firebase("https://flowershop.firebaseio.com")
@@ -56,6 +68,7 @@ angular.module('app.controllers', [])
     $scope.sunpmhour = data.sunpmStart;
     $scope.sunclosingTime = data.sunClose;
     $scope.errandStatus = data.errand;
+    console.log($scope.errandStatus);
 
     console.log($scope.amhour);
 
@@ -64,15 +77,21 @@ var satClose = angular.element( document.querySelector( '#closeSat' ) );
 var sunTime = angular.element( document.querySelector( '#sunHours' ) );
 var sunClose = angular.element( document.querySelector( '#closeSun' ) );
 var stats = angular.element( document.querySelector( '#statusmsg' ) );
+var errs = angular.element( document.querySelector( '#errandmsg' ) );
+
 
 if(data.errand == true) {
   stats.addClass('hide');
-
+  errs.removeClass('hide');
+  $scope.status = "closed";
+  startdaTimer();
 }
+
 if(data.errand != true) {
-  stats.removeClass('hide');
-
+  console.log("closed errand");
+  $scope.status = "open";
 }
+
 
 if(data.satOpen != true) {
   console.log("closed saturday");
@@ -192,23 +211,31 @@ if (day == 1 || day == 2 ||day == 3 ||day == 4 ||day == 5){
   var secI = angular.element( document.querySelector( '#secInsta' ) );
 
   if($scope.status == "closed") {
-
-  console.log("holla if ya hear me");
+    console.log("close email");
    emailBlock.removeClass('hide');
-  //  secI.removeClass('hide');
      firstI.addClass('none');
-
 }
 
-if($scope.status == "open") {
-
-console.log("holla if ya hear me");
- emailBlock.addClass('hide');
-//  secI.removeClass('hide');
-firstI.removeClass('none');
-
-
+  if($scope.status == "open") {
+  console.log("we open");
+  emailBlock.addClass('hide');
+  firstI.removeClass('none');
 }
+
+if($scope.status == "closed" ) {
+  console.log("close email");
+ emailBlock.removeClass('hide');
+   firstI.addClass('none');
+}
+
+if($scope.status == "open" && $scope.errandStatus == true) {
+  console.log("shuter down");
+  emailBlock.removeClass('hide');
+   firstI.addClass('none');}
+
+
+
+
 })// snapshot END
 
 }// checkStatus END
@@ -237,11 +264,6 @@ $scope.reset = function() {
   $scope.msg = {};
 }
 
-$scope.areYouClosed = function() {
-
-
-
-}
   $scope.ownerLogin = function() {
     console.log("hi");
      $state.go('menu.cart');
@@ -312,18 +334,12 @@ $scope.areYouClosed = function() {
 
  $scope.errandTimer = function() {
    console.log("out for errand");
-   startTimer();
    dataService.addData({
      errand: true
  })
  }
 
- startTimer = function () {
-   setTimeout(function(){
-     thanks.addClass('hide');
-   }, 9000);
 
- }
   // $scope.datax = {};
   //
   // // An elaborate, custom popup
