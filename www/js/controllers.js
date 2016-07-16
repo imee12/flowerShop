@@ -401,16 +401,28 @@ dataService.addData({
 })
 
 }
+var yesCustMenu = angular.element( document.querySelector( '#customerMenu' ) );
+
+$scope.yesCust = function () {
+console.log("hey");
+yesCustMenu.removeClass('hide');
+}
+
+$scope.noCust = function () {
+console.log("no");
+yesCustMenu.addClass('hide');
+
+}
 $scope.openTime = function() {
 
 
 
 }
   $scope.form = {
-      mfam: '',
-      mflunch: '',
-      mfpm: '',
-      mfclose: '',
+      // mfam: '',
+      // mflunch: '',
+      // mfpm: '',
+      // mfclose: '',
     }
 
   $scope.saveHours = function() {
@@ -497,18 +509,18 @@ $scope.currentCustomer = store.get('currentCustomer')
 }
 }
 
-  $scope.sendEmail = function(){
-    $scope.currentCustomer = store.get('currentCustomer')
-    console.log( $scope.currentCustomer.email);
-      cordova.plugins.email.open({
-      to:      $scope.currentCustomer.email,
-      //cc:      'erika@mustermann.de',
-    //  bcc:     ['john@doe.com', 'jane@doe.com'],
-      subject: 'Thanks for Stopping By in bloom!',
-      body:    "<p>Sorry we missed you!<p><p>Please let me know how we can help!</p><p>in bloom<p>"
-   });
-
-}
+//   $scope.sendEmail = function(){
+//     $scope.currentCustomer = store.get('currentCustomer')
+//     console.log( $scope.currentCustomer.email);
+//       cordova.plugins.email.open({
+//       to:      $scope.currentCustomer.email,
+//       //cc:      'erika@mustermann.de',
+//     //  bcc:     ['john@doe.com', 'jane@doe.com'],
+//       subject: 'Thanks for Stopping By in bloom!',
+//       body:    "<p>Sorry we missed you!<p><p>Please let me know how we can help!</p><p>in bloom<p>"
+//    });
+//
+// }
 
   $scope.startCall = function () {
     $scope.currentCustomer = store.get('currentCustomer')

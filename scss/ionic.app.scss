@@ -21,6 +21,26 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+.hoursButton {
+  font-size:18px;
+  margin-right: 5px;
+  border: 2px solid gray;
+  padding: 2px;text-align: center;
+  background-color: rgb(192,216,240);
+  border-radius: 3%
+}
+
+.menuHead {
+  font-family: Courgette;
+  font-size: 25px;
+  margin-bottom: 5px;
+  text-align: center
+}
+
+#menuSat, #menuSun, #customerMenu, #wkdayMenu {
+  font-family: Lora;
+
+}
 
 #cordoEm {
   margin-left: 25px;

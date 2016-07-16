@@ -1,6 +1,7 @@
 <ion-view hide-nav-bar="true" title="Cloud" id="page3" class=" ">
     <ion-content padding="true" class="has-header">
-<h1 style="text-align: center">HOURS OF OPERATION</h1>
+<h1 class="menuHead">hours of operation</h1>
+<div id="wkdayMenu">
   <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.mfam">
      <div class="col" style="font-size: 20px">M - F AM Open</div>
      <div class="col">Current Time: {{amhour| date: "h:mm a"}}</div>
@@ -21,11 +22,14 @@
    <div class="col">Current Time: {{closingTime| date: "h:mm a"}}</div>
    <div class="col">New Time: {{form.mfclose| date: "h:mm a"}}</div>
 </label>
+</div>
 
-
-<div ng-click="saveHours()" id="glass" class="ion-android-done glass-icon" style="font-size:35px; margin-right: 5px"></div>
+<div class="col">
+<div ng-click="saveHours()" id="" class="hoursButton" style="">save new hours</div>
+</div>
  <div style="height: 10px"></div>
-   <div class="col" style="font-size: 20px; margin-bottom: 5px; text-align: center">Open Saturday?</div>
+
+  <div class="menuHead col">open saturday?</div>
    <div id="saturdayRadios" class="col">
 <div class="row">
 <ion-radio class="col col-50" ng-model="choice" ng-value="'yesSat'" ng-click="yesSat()">Yes</ion-radio>
@@ -40,31 +44,31 @@
 </div>
  <div id="menuSat"class="hide">
    <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="satform.satam">
-      <div class="col" style="font-size: 20px">M - F AM Open</div>
+      <div class="col" style="font-size: 20px">SAT AM Open</div>
       <div class="col">Current Time: {{satamhour| date: "h:mm a"}}</div>
       <div class="col">New Time: {{satform.satam| date: "h:mm a"}}</div>
   </label>
   <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="satform.satlunch">
-     <div class="col" style="font-size: 20px">M - F Lunch</div>
+     <div class="col" style="font-size: 20px">SAT Lunch</div>
      <div class="col">Current Time: {{satlunchBreak| date: "h:mm a"}}</div>
      <div class="col">New Time: {{satform.satlunch| date: "h:mm a"}}</div>
  </label>
  <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="satform.satpm">
-    <div class="col" style="font-size: 20px">M - F PM Open</div>
+    <div class="col" style="font-size: 20px">SAT PM Open</div>
     <div class="col">Current Time: {{satpmhour| date: "h:mm a"}}</div>
     <div class="col">New Time: {{satform.satpm| date: "h:mm a"}}</div>
  </label>
- <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="satform.satclose">
-    <div class="col" style="font-size: 20px">M - F Close</div>
+ <label class="row" style=""ion-datetime-picker time am-pm ng-model="satform.satclose">
+    <div class="col" style="font-size: 20px">SAT Close</div>
     <div class="col">Current Time: {{satclosingTime| date: "h:mm a"}}</div>
     <div class="col">New Time: {{satform.satclose| date: "h:mm a"}}</div>
  </label>
- <div ng-click="saveHoursSat()" id="glass" class="ion-android-done glass-icon" style="font-size:35px; margin-right: 5px"></div>
+ <div ng-click="saveHoursSat()"  class="hoursButton">save new saturday hours</div>
 </div>
 
 <div style="height: 10px"></div>
 
-  <div class="col" style="font-size: 20px; margin-bottom: 5px; text-align: center">Open Sunday?</div>
+  <div class="col menuHead" style="">open sunday?</div>
   <div id="sundayRadios" class="col">
 <div class="row">
 <ion-radio class="col col-50" ng-model="choice" ng-value="'yesSun'" ng-click="yesSun()">Yes</ion-radio>
@@ -73,30 +77,39 @@
 </div>
 <div id="menuSun"class="hide">
   <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="sunform.sunam">
-     <div class="col" style="font-size: 20px">M - F AM Open</div>
+     <div class="col" style="font-size: 20px">SUN AM Open</div>
      <div class="col">Current Time: {{sunamhour| date: "h:mm a"}}</div>
      <div class="col">New Time: {{sunform.sunam| date: "h:mm a"}}</div>
  </label>
  <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="sunform.sunlunch">
-    <div class="col" style="font-size: 20px">M - F Lunch</div>
+    <div class="col" style="font-size: 20px">SUN Lunch</div>
     <div class="col">Current Time: {{sunlunchBreak| date: "h:mm a"}}</div>
     <div class="col">New Time: {{sunform.sunlunch| date: "h:mm a"}}</div>
 </label>
 <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="sunform.sunpm">
-   <div class="col" style="font-size: 20px">M - F PM Open</div>
+   <div class="col" style="font-size: 20px">SUN PM Open</div>
    <div class="col">Current Time: {{sunpmhour| date: "h:mm a"}}</div>
    <div class="col">New Time: {{sunform.sunpm| date: "h:mm a"}}</div>
 </label>
-<label class="row" style="borde-bottomr: 2px solid black"ion-datetime-picker time am-pm ng-model="sunform.sunclose">
-   <div class="col" style="font-size: 20px">M - F Close</div>
+<label class="row" ion-datetime-picker time am-pm ng-model="sunform.sunclose">
+   <div class="col" style="font-size: 20px">SUN Close</div>
    <div class="col">Current Time: {{sunclosingTime| date: "h:mm a"}}</div>
    <div class="col">New Time: {{sunform.sunclose| date: "h:mm a"}}</div>
 </label>
-<div ng-click="saveHoursSun()" id="glass" class="ion-android-done glass-icon" style="font-size:35px; margin-right: 5px"></div>
-</div>
+<div ng-click="saveHoursSun()"  class="hoursButton">save new saturday hours</div>
 
-<div class="col" style="font-size: 20px; margin-bottom: 5px; text-align: center">View Missed Customers?</div>
-  <div ng-click="selectCurrentCustomer(i)" class="col"style="border:1px black solid" ng-repeat="i in customers">
+</div>
+<div style="height: 10px"></div>
+
+<div class="col menuHead" style="">view missed customers?</div>
+<div id="sundayRadios" class="col">
+<div class="row">
+<ion-radio class="col col-50" ng-model="choice" ng-value="'yesCust'" ng-click="yesCust()">Yes</ion-radio>
+<ion-radio class="col col-50" ng-model="choice" ng-value="'noCust'" ng-click="noCust()">No</ion-radio>
+</div>
+</div>
+<div id="customerMenu" class="hide">
+  <div ng-click="selectCurrentCustomer(i)" class="col"style="border:1px rgb(192,216,240) solid; border-radius:5px" ng-repeat="i in customers">
     <div style="font-size: 15px; padding: 2px; margin: 5px; font-weight:bold">Name: {{i.name}}</div>
     <div style="font-size: 15px; padding: 2px; margin: 5px;">Phone Number: {{i.num}}</div>
 
@@ -105,6 +118,7 @@
     </div>
 
 
+  </div>
   </div>
 
 <!-- <label class="item item-input assetItem">
