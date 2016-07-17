@@ -1,17 +1,24 @@
 angular.module('app.controllers', [])
 
 .controller('homeCtrl', function($scope, $state, dataService, $timeout, InstaService) {
-$scope.status = "open";
+  $scope.status = "open";
 
 
   getPhotos = function() {
   InstaService.fetchPopular(function(data){
         $scope.pics = data;
         console.log($scope.pics);
-      });
+    });
 }
-
-
+//TODO: RANDOMIZE INSTAGRAM NG REPEAT
+// $scope.rankedList = [];
+// angular.forEach($scope.pics, function(item) {
+//     $scope.rankedList.push({
+//         item: item,
+//         rank: 0.5 - $window.Math.random()
+//     });
+//     console.log(rankedList);
+// });
 
 
   startdaTimer = function(){
@@ -24,7 +31,7 @@ $scope.status = "open";
       dataService.addData({
         errand: false
     })
-  }, 50000);
+  }, 900000);
   }
   $scope.clock = "loading clock...";
       $scope.tickInterval = 1000
@@ -88,7 +95,9 @@ if(data.errand == true) {
 }
 
 if(data.errand != true) {
-  console.log("closed errand");
+  console.log("back errand");
+  stats.removeClass('hide');
+  errs.addClass('hide');
   $scope.status = "open";
 }
 
@@ -222,12 +231,6 @@ if (day == 1 || day == 2 ||day == 3 ||day == 4 ||day == 5){
   firstI.removeClass('none');
 }
 
-if($scope.status == "closed" ) {
-  console.log("close email");
- emailBlock.removeClass('hide');
-   firstI.addClass('none');
-}
-
 if($scope.status == "open" && $scope.errandStatus == true) {
   console.log("shuter down");
   emailBlock.removeClass('hide');
@@ -317,7 +320,7 @@ $scope.reset = function() {
   $scope.errand = function() {
    var confirmPopup = $ionicPopup.confirm({
      title: 'Heading out for a delivery?',
-     template: 'I will change the sign to CLOSED for 15 mins.'
+     template: 'I will change the sign to OUT FOR DELIVERY for 15 mins.'
    });
 
    confirmPopup.then(function(res) {
@@ -329,6 +332,25 @@ $scope.reset = function() {
      }
    });
  }
+
+ $scope.errandBack = function() {
+  var confirmPopup = $ionicPopup.confirm({
+    title: 'Are you back in the store?',
+    template: 'I will update the sign.'
+  });
+
+  confirmPopup.then(function(res) {
+    if(res) {
+      console.log('You are sure');
+      dataService.addData({
+        errand: false
+    })
+    } else {
+      console.log('You are not sure');
+    }
+  });
+}
+
 
  var stats = angular.element( document.querySelector( '#statusmsg' ) );
 
@@ -542,23 +564,10 @@ $scope.currentCustomer = store.get('currentCustomer')
 }
 }
 
-//   $scope.sendEmail = function(){
-//     $scope.currentCustomer = store.get('currentCustomer')
-//     console.log( $scope.currentCustomer.email);
-//       cordova.plugins.email.open({
-//       to:      $scope.currentCustomer.email,
-//       //cc:      'erika@mustermann.de',
-//     //  bcc:     ['john@doe.com', 'jane@doe.com'],
-//       subject: 'Thanks for Stopping By in bloom!',
-//       body:    "<p>Sorry we missed you!<p><p>Please let me know how we can help!</p><p>in bloom<p>"
-//    });
-//
-// }
-
 $scope.showAlert = function() {
    var alertPopup = $ionicPopup.alert({
      title: 'Oh no!',
-     template: 'This email service is not available on you current device.'
+     template: 'This email service is not available on your current device.'
    });
 
    alertPopup.then(function(res) {

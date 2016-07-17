@@ -1,4 +1,4 @@
-<ion-view hide-nav-bar="true" title="Home" id="page1" class=" ">
+<ion-view hide-nav-bar="true" title="in bloom" id="page1" class=" ">
     <ion-content padding="true" class="has-header">
       <div class="row" style="">
       <div id="leftside" class="col col-67" style="border: 2px solid black; height: 690px; background-color: rgb(192,216,240)">
@@ -76,10 +76,21 @@
   </form>
 </div>
 <!-- <div style="border: 2px solid black;height:250px;margin: 10px"> -->
-<div id="firstInsta" style="" ng-repeat="p in pics | limitTo: 2">
-    <div href="{{p.link}}" target="_blank">
-      <img class="inPhotos col" style="" ng-src="{{p.images.low_resolution.url}}" ></div>
+<div id="firstInsta" style="" ng-repeat="p in pics |  limitTo: 2 ">
+  <!-- <a href="{{p.link}}" target="_blank">
+      <img class="inPhotos col" style="" ng-src="{{p.images.low_resolution.url}}" ></a> -->
+
+      <a href="#" onclick="window.open('https://www.instagram.com/inbloomprettyflowers/', '_blank', 'location=no'); return false;"  target="_blank">
+          <img class="inPhotos col" style="" ng-src="{{p.images.low_resolution.url}}" ></a>
+
+      <!-- <a style="display: none"id="mapClick" class="item" href="#" onclick="window.open('http://beta.roktech.net/GhostGearBustersMap/', '_blank', 'location=no'); return false;">
+              View Map
+          </a><br /> -->
+    <!-- <div href="{{p.link}}" target="_blank">
+      <img class="inPhotos col" style="" ng-src="{{p.images.low_resolution.url}}" ></div> -->
   </div>
+
+
   <!-- <div id="secInsta" class="hide" style="" ng-repeat="p in pics | limitTo: 1">
       <a href="{{p.link}}" target="_blank">
       <img style="height:250px; width: 95%; margin: 5px" ng-src="{{p.images.low_resolution.url}}" /></a>

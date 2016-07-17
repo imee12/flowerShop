@@ -96,7 +96,7 @@ angular.module('app.services', [])
         //  var endPoint = "https://api.instagram.com/v1/users/self/?access_token=ACCESS-TOKEN"
            var endPoint=
           // '"https://api.instagram.com/v1/users/self/?access_token=" + "token"';
-          "https://api.instagram.com/v1/users/self/media/recent/?access_token=3549482147.acf87e4.3cf07755b49448db889bf0120b4af5d7&c&callback=JSON_CALLBACK&count=2"
+          "https://api.instagram.com/v1/users/self/media/recent/?access_token=3549482147.acf87e4.3cf07755b49448db889bf0120b4af5d7&c&callback=JSON_CALLBACK&count=10"
           //  var endPoint=
           //  "https://api.instagram.com/v1/users/self/?access_token=3549482147.acf87e4.3cf07755b49448db889bf0120b4af5d7";
 
