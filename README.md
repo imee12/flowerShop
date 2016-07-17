@@ -1,25 +1,9 @@
-Ionic App Base
+in bloom
 =====================
 
-A starting project for Ionic that optionally supports using custom SCSS.
+in bloom, serves as dynamic signage that enables a flower shop owner to easily update the shop’s hours from an iPhone, iPad, or browser. The interface also allows customers who visit the shop during closed hours to leave contact information. The florist can then call or email the customer within the application if she is using a device that has email and telephone capabilities.
 
-## Using this project
+Ideally, one iPad interface would serve as the storefront's signage/kiosk while the owner updates store hours using an iPhone when she’s on the go or at home. For errands and deliveries, the florist can update her signage to indicate out for delivery. She can then either update her status when she returns to the store or not. in bloom will update the signage after 15 minutes.
 
-We recommend using the [Ionic CLI](https://github.com/driftyco/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
+in bloom is built with Ionic, giving the store owner the flexibility of accessing her dynamic signage from an iPad, iPhone, Android, or in the browser.
 
-For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
-
-```bash
-$ npm install -g ionic
-```
-
-Then run: 
-
-```bash
-$ ionic start myProject tabs
-```
-
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
-
-## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.
