@@ -55,7 +55,7 @@ angular.module('app.controllers', [])
 
    checkStatus = function() {
 
-     console.log("checking");
+    console.log("checking");
    var ref = new Firebase("https://flowershop.firebaseio.com")
    ref.once("value", function(snapshot){
     var data = snapshot.val();
@@ -86,6 +86,27 @@ var sunClose = angular.element( document.querySelector( '#closeSun' ) );
 var stats = angular.element( document.querySelector( '#statusmsg' ) );
 var errs = angular.element( document.querySelector( '#errandmsg' ) );
 
+
+var emailBlock = angular.element( document.querySelector( '#emailSubmit' ) );
+var firstI= angular.element( document.querySelector( '#firstInsta' ) );
+var secI = angular.element( document.querySelector( '#secInsta' ) );
+
+if($scope.status == "closed") {
+  console.log("close email");
+ emailBlock.removeClass('hide');
+   firstI.addClass('none');
+}
+
+if($scope.status == "open") {
+console.log("we open");
+emailBlock.addClass('hide');
+firstI.removeClass('none');
+}
+
+if($scope.status == "open" && $scope.errandStatus == true) {
+console.log("shuter down");
+emailBlock.removeClass('hide');
+ firstI.addClass('none');}
 
 if(data.errand == true) {
   stats.addClass('hide');
@@ -214,29 +235,6 @@ if (day == 1 || day == 2 ||day == 3 ||day == 4 ||day == 5){
        $scope.status = "closed"
      }
   }
-
-  var emailBlock = angular.element( document.querySelector( '#emailSubmit' ) );
-  var firstI= angular.element( document.querySelector( '#firstInsta' ) );
-  var secI = angular.element( document.querySelector( '#secInsta' ) );
-
-  if($scope.status == "closed") {
-    console.log("close email");
-   emailBlock.removeClass('hide');
-     firstI.addClass('none');
-}
-
-  if($scope.status == "open") {
-  console.log("we open");
-  emailBlock.addClass('hide');
-  firstI.removeClass('none');
-}
-
-if($scope.status == "open" && $scope.errandStatus == true) {
-  console.log("shuter down");
-  emailBlock.removeClass('hide');
-   firstI.addClass('none');}
-
-
 
 
 })// snapshot END
