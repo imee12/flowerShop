@@ -1,6 +1,8 @@
 {
   "name": "flowershop",
-  "app_id": "",
-  "gulpStartupTasks": ["sass", "watch"]
-
+  "app_id": "b8451713",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ]
 }

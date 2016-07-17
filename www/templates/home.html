@@ -9,15 +9,12 @@
           <div id="inbloom" class="col" style="">in bloom</div>
           </div>
         </div>
-
-
         <div style="height: 15px;margin-top: 15px"></div>
         <div id="statusmsg" class="col" style="">{{status}}</div>
         <div id="errandmsg" class="col hide" style="">out for delivery</div>
         <div style="height: 20px;margin: 10px"></div>
 
     <div id="hoursofop"style="">HOURS OF OPERATION</div>
-     <!-- <div style="border: 2px solid black" >{{amhour| date: "h:mm a"}}</div> -->
      <div>
        <h4 class="col" style="text-align: center">monday through friday</h4>
 <div id="timeList" class="row">
@@ -69,44 +66,21 @@
         <input class="col" placeholder="Name" ng-model="msg.name">
         <input class="col" placeholder="Email Address" ng-model="msg.email">
         <input class="col" placeholder="Phone Number" ng-model="msg.num">
-
-     <div ng-click="savemsg()" id="glass" class="" style="border: 2px solid black; font-size:20px; padding: 2px; text-align: center;  background-color: rgb(192,216,240)">SEND</div>
+        <div ng-click="savemsg()" id="glass" class="" style="border: 2px solid black; font-size:20px; padding: 2px; text-align: center;  background-color: rgb(192,216,240)">SEND</div>
         <div id="thankYou" class="hide">THANK YOU! WE WILL CONTACT YOU SOON!</div>
       </div>
   </form>
 </div>
-<!-- <div style="border: 2px solid black;height:250px;margin: 10px"> -->
 <div id="firstInsta" style="" ng-repeat="p in pics |  limitTo: 2 ">
-  <!-- <a href="{{p.link}}" target="_blank">
-      <img class="inPhotos col" style="" ng-src="{{p.images.low_resolution.url}}" ></a> -->
-
       <a href="#" onclick="window.open('https://www.instagram.com/inbloomprettyflowers/', '_blank', 'location=no'); return false;"  target="_blank">
-          <img class="inPhotos col" style="" ng-src="{{p.images.low_resolution.url}}" ></a>
+      <img class="inPhotos col" style="" ng-src="{{p.images.low_resolution.url}}" ></a>
+</div>
 
-      <!-- <a style="display: none"id="mapClick" class="item" href="#" onclick="window.open('http://beta.roktech.net/GhostGearBustersMap/', '_blank', 'location=no'); return false;">
-              View Map
-          </a><br /> -->
-    <!-- <div href="{{p.link}}" target="_blank">
-      <img class="inPhotos col" style="" ng-src="{{p.images.low_resolution.url}}" ></div> -->
-  </div>
-
-
-  <!-- <div id="secInsta" class="hide" style="" ng-repeat="p in pics | limitTo: 1">
-      <a href="{{p.link}}" target="_blank">
-      <img style="height:250px; width: 95%; margin: 5px" ng-src="{{p.images.low_resolution.url}}" /></a>
-    </div> -->
-
-<!-- </div> -->
 <div class="col">
-<div ng-click="ownerLogin()" style="display: inline-block; float: right"> login</div>
-<img ng-click="ownerLogin()" src="img/flowershoplogo.png" style="width: 50px; display: inline-block; float: right" alt="">
+  <div ng-click="ownerLogin()" style="display: inline-block; float: right"> login</div>
+  <img ng-click="ownerLogin()" src="img/flowershoplogo.png" style="width: 50px; display: inline-block; float: right" alt="">
 </div>
 </div>
-        <!-- <div style="margin: 0px; line-height: 250px; text-align: center; background-color: rgb(232, 235, 239);">
-            <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-        </div> -->
-      </div>
-
-
+</div>
     </ion-content>
 </ion-view>

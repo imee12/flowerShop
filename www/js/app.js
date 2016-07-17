@@ -24,12 +24,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    // var client_id = 292bf2253dc24b83abff990d3668345f;
-    //  var user_id =  3549482147;
-  //  instafeed([292bf2253dc24b83abff990d3668345f], [3549482147]);
-
+  
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);

@@ -10,17 +10,6 @@ angular.module('app.controllers', [])
         console.log($scope.pics);
     });
 }
-//TODO: RANDOMIZE INSTAGRAM NG REPEAT
-// $scope.rankedList = [];
-// angular.forEach($scope.pics, function(item) {
-//     $scope.rankedList.push({
-//         item: item,
-//         rank: 0.5 - $window.Math.random()
-//     });
-//     console.log(rankedList);
-// });
-
-
   startdaTimer = function(){
     var stats = angular.element( document.querySelector( '#statusmsg' ) );
     var errs = angular.element( document.querySelector( '#errandmsg' ) );
@@ -45,7 +34,6 @@ angular.module('app.controllers', [])
 
   setInterval(function(){
     checkStatus();
-    // getPhotos();
   }, 9000);
 
    $scope.$on('$ionicView.enter', function() {
@@ -295,7 +283,6 @@ $scope.reset = function() {
     }, function(error, authData) {
       if (error) {
 
-    //$scope.loginFailed();
     console.log("error");
 
     }  else {
@@ -310,10 +297,6 @@ $scope.reset = function() {
 })
 
 .controller('cloudCtrl', function($scope, dataService, store, $state, $ionicPopup) {
-
-  // $scope.errand = function() {
-  //   $scope.showConfirm();
-  // }
 
   $scope.errand = function() {
    var confirmPopup = $ionicPopup.confirm({
@@ -360,32 +343,6 @@ $scope.reset = function() {
  }
 
 
-  // $scope.datax = {};
-  //
-  // // An elaborate, custom popup
-  // var myPopup = $ionicPopup.show({
-  //   template: '<input type="string" ng-model="datax.mins">',
-  //   title: 'Heading out for a delivery?',
-  //   subTitle: 'How long will you be?',
-  //   scope: $scope,
-  //   buttons: [
-  //     { text: 'Cancel' },
-  //     {
-  //       text: '<b>Save</b>',
-  //       type: 'button-positive',
-  //       onTap: function(e) {
-  //         if (!$scope.datax.mins) {
-  //           //don't allow the user to close unless he enters wifi password
-  //           e.preventDefault();
-  //         } else {
-  //           console.log($scope.datax.mins);
-  //           return $scope.datax.mins;
-  //         }
-  //       }
-  //     }
-  //   ]
-  // })
-//}//
 var cordaE = angular.element( document.querySelector( '#cordoEm' ) );
 
   hideEmail = function () {
@@ -470,12 +427,7 @@ $scope.openTime = function() {
 
 
 }
-  $scope.form = {
-      // mfam: '',
-      // mflunch: '',
-      // mfpm: '',
-      // mfclose: '',
-    }
+  $scope.form = {}
 
   $scope.saveHours = function() {
     console.log($scope.form);
@@ -530,8 +482,6 @@ $scope.openTime = function() {
      $scope.currentCustomer = store.get('currentCustomer')
    }
    $scope.selectCurrentCustomer = function (i) {
-   //  $scope.currentMember.firstName = currentMember.firstName;
-   //StorageService.add(currentMember);
    if($scope.currentCustomer) {
      $scope.currentCustomer = ''
    }
@@ -548,16 +498,13 @@ $scope.currentCustomer = store.get('currentCustomer')
       to:      $scope.currentCustomer.email,
       subject: 'Thanks for Stopping By in bloom!',
       body:    "<p>Sorry we missed you!<p><p>Please let me know how we can help!</p><p>in bloom<p>"
-    //  body:    "<p>Sorry we missed you!<p> <br> <p>Please let me know how I can help!</p>"
    });
   } catch (e) {
 
       if(e instanceof ReferenceError == true){
-      // alert("This email service is not available on you current device.")
       $scope.showAlert();
 
       } else {
-    //  $scope.sendEmail();
   }
 }
 }
@@ -583,7 +530,6 @@ $scope.deleteCust = function(i) {
     $scope.currentCustomer = store.get('currentCustomer')
 
     console.log($scope.currentCustomer.num);
-    //$scope.currentCustomer.num = phoneNumber
     $scope.three =   $scope.currentCustomer.num.slice(0,3);
     console.log($scope.three);
     $scope.nextThree =   $scope.currentCustomer.num.slice(3,6);
@@ -598,12 +544,6 @@ $scope.deleteCust = function(i) {
     $state.go('menu.home');
   };
 
-
-//   var customerRef = new Firebase("https://flowershop.firebaseio.com/Customers")
-//   customerRef.once("value", function(snapshot){
-//    $scope.customers = snapshot.val();
-//    console.log($scope.customers);
-// })
 
 })
 

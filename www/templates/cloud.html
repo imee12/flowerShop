@@ -1,26 +1,16 @@
 <ion-view hide-nav-bar="true" title="inbloom" id="page3" class=" ">
   <ion-header-bar class="" style="height: 40px; 2px solid black">
-  <!--   <div  class="col text-left"> -->
-
-    <!-- <div ui-sref="menu.home" class="">
-      <span class="ion-android-arrow-back" style="margin-right: 5px"></span>
-    </div>
-    <div id="icon" class="ion-ios-rose" style="margin-left: 10px; font-size: 25px; padding: 2px" ng-click="errandBack()"></div>
-    </div> -->
-
-<div  class="col text-left">
-<div ui-sref="menu.home" id="icon" class="" style="margin-right: 3px">signage</div>
-<div id="icon" class="ion-ios-rose" style="margin-right: 10px; font-size: 25px; padding: 2px" ng-click="errandBack()"></div>
+  <div  class="col text-left">
+    <div ui-sref="menu.home" id="icon" class="" style="margin-right: 3px">signage</div>
+    <div id="icon" class="ion-ios-rose" style="margin-right: 10px; font-size: 25px; padding: 2px" ng-click="errandBack()"></div>
 </div>
-
     <div  class="col text-right">
-      <div id="icon" class="ion-android-walk" style="margin-right: 10px; font-size: 25px; padding: 2px" ng-click="errand()">?</div>
+    <div id="icon" class="ion-android-walk" style="margin-right: 10px; font-size: 25px; padding: 2px" ng-click="errand()">?</div>
     <div id="icon"ng-click="logout()" class="">logout</div>
-    </div>
-
-</ion-header-bar>
-    <ion-content padding="true" class="has-header">
-<h1 class="menuHead">hours of operation</h1>
+</div>
+  </ion-header-bar>
+<ion-content padding="true" class="has-header">
+  <h1 class="menuHead">hours of operation</h1>
 <div id="wkdayMenu">
   <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="form.mfam">
      <div class="col" style="font-size: 20px">M - F AM Open</div>
@@ -43,24 +33,16 @@
    <div class="col">New Time: {{form.mfclose| date: "h:mm a"}}</div>
 </label>
 </div>
-
 <div class="col">
 <div ng-click="saveHours()" id="" class="hoursButton" style="">save new hours</div>
 </div>
  <div style="height: 10px"></div>
-
   <div class="menuHead col">open saturday?</div>
    <div id="saturdayRadios" class="col">
 <div class="row">
 <ion-radio class="col col-50" ng-model="choice" ng-value="'yesSat'" ng-click="yesSat()">Yes</ion-radio>
 <ion-radio class="col col-50" ng-model="choice" ng-value="'noSat'" ng-click="noSat()">No</ion-radio>
 </div>
-<!--    <label type="radio" name="" value="" ng-click="yesSat()"><br>
-  <span>Yes</span>
-<label for="yes" ng-click="yesSat()">Yes</label>
- <label type="radio" name="" value="" ng-click="noSat()"><br>
- <span for="no">No</span>
- -->
 </div>
  <div id="menuSat"class="hide">
    <label class="row" style="border-bottom: 2px solid black"ion-datetime-picker time am-pm ng-model="satform.satam">
@@ -133,28 +115,10 @@
     <div style="font-size: 15px; padding: 2px; margin: 5px; font-weight:bold;">Name: {{i.name}}
     <span id="cordoEm" class="ion-ios-trash"ng-click="deleteCust(i)" style="font-size: 35px; float: right;"></span></div>
     <div style="font-size: 15px; padding: 2px; margin: 5px;">Phone Number: {{i.num}}</div>
-
     <div style="font-size: 15px; padding: 2px; margin: 5px;">Email: {{i.email}}
     <span id="cordoEm" ng-click="selectCurrentCustomer(i); checkCordovaAvail()" style="">Email?</span>
     </div>
-
   </div>
   </div>
-
-<!-- <label class="item item-input assetItem">
-   <span class="input-label">Sunday</span>
-   <input type="text" placeholder="" ng-model="form.sun">
-</label>
-<label class="item item-input assetItem">
-   <span class="input-label">Be Back</span>
-   <input type="text" placeholder="" ng-model="form.beback">
-</label> -->
-
-
-
-
-
-
-
     </ion-content>
 </ion-view>
