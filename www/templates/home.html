@@ -1,7 +1,7 @@
 <ion-view hide-nav-bar="true" title="in bloom" id="page1" class=" ">
     <ion-content padding="true" class="has-header">
       <div class="row" style="">
-      <div id="leftside" class="col col-67" style="border: 2px solid black; height: 690px; background-color: rgb(192,216,240)">
+      <div id="leftside" class="col col-67" style="border: 2px solid black; height: 695px; background-color: rgb(192,216,240)">
 
         <div class="col" style="background-color:#fafafa; border: 2px solid black; position: relative; border-radius: 4px;">
           <div class="row">
@@ -55,7 +55,7 @@
 </div>
 
       </div>
-  <div id="rightSide"class="col col-33" style="border: 2px solid black; height: 690px; background-color:#ededed">
+  <div id="rightSide"class="col col-33" style="border: 2px solid black; height: 695px; background-color:#ededed">
 <div id="timeClock" style="font-family: Lora; background-color:black;border: 2px solid black; padding: 0; position: relative; text-align: center; height: 90px; border-radius: 2px">
 <h1 style="padding: 2px; color: #ffff7f">{{clock | date:"fullDate" }}</h1>
 <h1 style="color: #ffff7f">{{clock | date:"h:mm a" }}</h1>
@@ -97,11 +97,11 @@
     </div> -->
 
 <!-- </div> -->
-
-
+<div class="col">
+<div ng-click="ownerLogin()" style="display: inline-block; float: right"> login</div>
 <img ng-click="ownerLogin()" src="img/flowershoplogo.png" style="width: 50px; display: inline-block; float: right" alt="">
-  </div>
-
+</div>
+</div>
         <!-- <div style="margin: 0px; line-height: 250px; text-align: center; background-color: rgb(232, 235, 239);">
             <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
         </div> -->

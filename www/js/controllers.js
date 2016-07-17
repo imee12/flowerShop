@@ -284,6 +284,7 @@ $scope.reset = function() {
       }
 })
 
+
   $scope.loginEmail = function(data){
     var ref = new Firebase("https://flowershop.firebaseio.com");
    console.log(data);
@@ -300,7 +301,6 @@ $scope.reset = function() {
     }  else {
 
     console.log("Authenticated successfully with payload:", authData);
-
       $state.go('menu.cloud');
     }
   });
